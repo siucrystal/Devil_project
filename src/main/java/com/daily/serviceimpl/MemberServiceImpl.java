@@ -14,8 +14,14 @@ public class MemberServiceImpl implements MemberService{
 	MemberMapper member;
 	
 	@Override
-	public void MemberRegister(MemberDTO dto) {
-		member.MemberRegister(dto);
+	public int MemberRegister(MemberDTO dto) {
+		try {
+			member.MemberRegister(dto);
+			return 1;
+		} catch (Exception e) {
+			return 0;
+		}
+		
 	}
 
 	@Override

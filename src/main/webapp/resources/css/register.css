@@ -31,23 +31,19 @@ input, button {
    outline: none;
 }
 
-a {
-   text-decoration: none;
-}
-
 img {
    max-width: 100%;
    height: auto;
 }
 
-.login {
+.join {
    position: relative;
    height: 100vh;
    display: grid;
    align-items: center;
 }
 
-.login__img {
+.join__img {
    position: absolute;
    width: 100%;
    height: 100%;
@@ -55,7 +51,7 @@ img {
    object-position: center;
 }
 
-.login__form {
+.join__form {
    position: relative;
    background-color: hsla(0, 0%, 10%, 0.1);
    border: 2px solid var(--white-color);
@@ -65,30 +61,30 @@ img {
    backdrop-filter: blur(10px);
 }
 
-.login__title {
+.join__title {
    text-align: center;
    font-size: var(--h1-font-size);
    font-weight: var(--font-medium);
    margin-bottom: 2rem;
 }
 
-.login__content, .login__box {
+.join__content, .join__box {
    display: grid;
 }
 
-.login__content {
+.join__content {
    row-gap: 1.75rem;
    margin-bottom: 1.5rem;
 }
 
-.login__box {
+.join__box {
    grid-template-columns: max-content 1fr;
    align-items: center;
    column-gap: 0.75rem;
    border-bottom: 2px solid var(--white-color);
 }
 
-.login__input {
+.join__input {
    width: 100%;
    padding-block: 0.8rem;
    background: none;
@@ -97,11 +93,11 @@ img {
    z-index: 1;
 }
 
-.login__box-input {
+.join__box-input {
    position: relative;
 }
 
-.login__label {
+.join__label {
    position: absolute;
    left: 0;
    top: 13px;
@@ -109,85 +105,40 @@ img {
    transition: top 0.3s, font-size 0.3s;
 }
 
-.login__box:nth-child(2) input{
+.join__box:nth-child(2) input{
    padding-right: 1.8rem;
 }
 
-.login__check {
-   display: flex;
-   align-items: center;
-   justify-content: right;
-}
-
-.login__check {
-   margin-bottom: 1.5rem;
-}
-
-.login__forgot, .login__register {
-   font-size: var(--small-font-size);
-}
-
-.login__check-group {
-   column-gap: 0.5rem;
-}
-
-.login__check-input {
-   width: 16px;
-   height: 16px;
-}
-
-.login__forgot {
-   color: var(--white-color);
-   position: relative;
-}
-
-.login__forgot:hover {
-   text-decoration: underline;
-}
-
-.login__button {
+.join__button {
    width: 100%;
    padding: 1rem;
    border-radius: 0.5rem;
    background-color: var(--white-color);
    font-weight: var(--font-medium);
    cursor: pointer;
-   margin-bottom: 2rem;
+   margin-bottom: 1rem;
 }
 
-.login__register {
-   text-align: center;
-}
-
-.login__register a {
-   color: var(--white-color);
-   font-weight: var(--font-medium);
-}
-
-.login__register a:hover {
-   text-decoration: underline;
-}
-
-.login__input:focus + .login__label {
+.join__input:focus + .join__label {
    top: -12px;
    font-size: var(--small-font-size);
 }
 
-.login__input:not(:placeholder-shown).login__input:not(:focus) + .login__label {
+.join__input:not(:placeholder-shown).join__input:not(:focus) + .join__label {
    top: -12px;
    font-size: var(--small-font-size);
 }
 
 @media screen and (min-width: 576px) {
-   .login {
+   .join {
       justify-content: center;
    }
-   .login__form {
+   .join__form {
       width: 432px;
       padding: 4rem 3rem 3.5rem;
       border-radius: 1.5rem;
    }
-   .login__title {
+   .join__title {
       font-size: 2rem;
    }
 }
