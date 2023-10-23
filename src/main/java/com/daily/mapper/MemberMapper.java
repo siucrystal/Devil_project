@@ -1,5 +1,11 @@
 package com.daily.mapper;
 
-public interface MemberMapper {
+import org.apache.ibatis.annotations.Mapper;
 
+import com.daily.dto.MemberDTO;
+
+@Mapper
+public interface MemberMapper {
+	int MemberRegister(MemberDTO dto);
+	String getMemberLogin(String id);
 }
