@@ -1,4 +1,4 @@
-package com.daily.serviceimpl;
+package com.daily.serviceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,14 +14,8 @@ public class MemberServiceImpl implements MemberService{
 	MemberMapper member;
 	
 	@Override
-	public int MemberRegister(MemberDTO dto) {
-		try {
-			member.MemberRegister(dto);
-			return 1;
-		} catch (Exception e) {
-			return 0;
-		}
-		
+	public void MemberRegister(MemberDTO dto) {
+		member.MemberRegister(dto);
 	}
 
 	@Override

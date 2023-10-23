@@ -10,8 +10,9 @@
 </head>
 <body>
 <h1>
-	Hello world!  
+	Hello world! 
 </h1>
 <a href="<%=contextPath %>/member/main">로그인</a>
+<a href="<%=contextPath %>/food/foodlist">음식목록</a>
 </body>
 </html>
