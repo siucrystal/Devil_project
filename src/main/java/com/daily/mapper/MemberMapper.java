@@ -7,5 +7,6 @@ import com.daily.dto.MemberDTO;
 @Mapper
 public interface MemberMapper {
 	int MemberRegister(MemberDTO dto);
-	String getMemberLogin(String id);
+	MemberDTO getMemberLogin(String id);
+	int updateMemberPassword(MemberDTO dto);
 }

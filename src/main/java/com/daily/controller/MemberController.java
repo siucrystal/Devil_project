@@ -37,16 +37,15 @@ public class MemberController {
 	
 	@PostMapping("login")
 	public ModelAndView login(MemberDTO dto,HttpSession session) {
-		System.out.println(dto.toString());
-		String pw = service.getMemberLogin(dto.getId());
+		MemberDTO getdto = service.getMemberLogin(dto.getId());
 		
 		ModelAndView mav = new ModelAndView();
-		if(dto.getPw().equals(service.getMemberLogin(dto.getId()))) {
-			//session.setAttribute("nick",loginmap.get("name"));
+		if(getdto != null && dto.getPw().equals(getdto.getPw())) {
+			session.setAttribute("name",getdto.getName());
 			mav.setViewName("redirect: ../mypage/main");
 		} else {
 			mav.setViewName("member/login");
-			mav.addObject("rs","fail");
+			mav.addObject("rs",0);
 		}	
 		return mav;
 	}
@@ -57,20 +56,44 @@ public class MemberController {
 	}
 	
 	@PostMapping("register")
-	public String register(MemberDTO dto,String checkpw) {
-		if(dto.getPw().equals(checkpw)) {
-			int rs = service.MemberRegister(dto);
-			if(rs == 0) {
-				return "redirect: register";
-			}
-			return "member/login";
+	public ModelAndView register(MemberDTO dto,String checkpw) {
+		int rs = service.MemberRegister(dto);
+		
+		ModelAndView mav = new ModelAndView();
+		if(rs == 1) {
+			mav.setViewName("member/login");
+			return mav;
 		} else {
-			return "redirect: register";
-		}		
+			mav.setViewName("member/register");
+			mav.addObject("rs",rs);
+			mav.addObject("pw",dto.getPw());
+			mav.addObject("checkpw",checkpw);
+			mav.addObject("name",dto.getName());
+			mav.addObject("age", dto.getAge());
+			mav.addObject("sex", dto.getSex());
+			return mav;
+		}
+		
+
 	}
 	
 	@GetMapping("forgot")
 	public String forgot() {
 		return "member/forgot";
+	}
+	
+	@PostMapping("forgot")
+	public ModelAndView forgot(MemberDTO dto) {
+		int rs = service.updateMemberPassword(dto);
+		ModelAndView mav = new ModelAndView();
+		if(rs == 1) {
+			mav.setViewName("redirect: login");
+			return mav;
+		} else {
+			mav.setViewName("member/forgot");
+			mav.addObject("rs",rs);
+			return mav;
+		}
+		
 	}
 }

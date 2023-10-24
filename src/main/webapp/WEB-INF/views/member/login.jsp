@@ -3,20 +3,33 @@
     pageEncoding="UTF-8"%>
  <%
 	String contextPath = request.getContextPath();
- 	String rs = (String)request.getAttribute("rs");
+ 	String rs = "";
+ 	if(request.getAttribute("rs") != null) {
+ 		rs = request.getAttribute("rs") + "";
+ 	}
+ 	
 %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-   <link rel="stylesheet" href="<%=contextPath %>/resources/css/login.css">
-   <script src="<%=contextPath %>/resources/js/login.js"></script> 
+   <link rel="stylesheet" href="<%=contextPath %>/resources/css/member/login.css">
    <title>Daily Balance</title>
 </head>
 <body>
+<script>
+window.onload = function(){
+	   document.querySelector('.login__button').addEventListener('click',function() {
+	      	document.login__form.submit();
+	      	<%if(rs.equals("0") && session.getAttribute("name") == null) { %>
+				alert("비밀번호가 틀렸습니다.");
+			<% } %>
+	   });
+	}
+</script>
    <div class="login">
-      <img src="<%=contextPath %>/resources/imgs/login_image.jpg" alt="login image" class="login__img">
+      <img src="<%=contextPath %>/resources/imgs/member/login_image.jpg" alt="login image" class="login__img">
       <form action="login" name="login__form" class="login__form" method="POST">
          <h1 class="login__title">Login</h1>
 

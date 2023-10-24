@@ -84,6 +84,16 @@ img {
    border-bottom: 2px solid var(--white-color);
 }
 
+.radio {
+   display: inline-block;
+   vertical-align: middle;
+   padding-bottom: 20px;
+}
+
+.radio + .radio {
+   margin-left: 20px;
+}
+
 .join__input {
    width: 100%;
    padding-block: 0.8rem;

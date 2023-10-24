@@ -12,10 +12,11 @@ public class MemberDTO {
 
 	}
 	
-	public MemberDTO(String id, String pw) {
+	public MemberDTO(String id, String pw,String name) {
 		super();
 		this.id = id;
 		this.pw = pw;
+		this.name = name;
 	}
 	
 	public MemberDTO(String id, String pw, String name, String sex, String age) {

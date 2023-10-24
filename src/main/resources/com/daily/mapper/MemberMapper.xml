@@ -7,7 +7,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="MemberRegister" parameterType="memberDTO">
 		insert into member(id,pw,name,sex,age) values(#{id},#{pw},#{name},#{sex},#{age});
 	</insert>
-	<select id="getMemberLogin" parameterType="String" resultType="String">
-		select pw from member where id = #{id};
+	<select id="getMemberLogin" parameterType="String" resultType="memberDTO">
+		select id,pw,name from member where id = #{id};
 	</select>
+	<update id="updateMemberPassword" parameterType="memberDTO">
+		update member set pw=#{pw} where id=#{id};
+	</update>
 </mapper>
