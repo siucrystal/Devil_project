@@ -11,7 +11,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
 	<select id="getFoodListSearch" parameterType="foodDTO" resultType="foodDTO">
         <![CDATA[
-        select * from food where category= #{category} and name=#{name};       
+        select * from food where category= #{category} and name like CONCAT('%',#{name},'%');       
+        ]]>
+    </select>
+     <select id="getMemberListPaging" parameterType="Map" resultType="memberDTO">
+        <![CDATA[
+        select * from food 
+        order by idx desc limit #{listNum} offset #{offset}
         ]]>
     </select>
 </mapper>

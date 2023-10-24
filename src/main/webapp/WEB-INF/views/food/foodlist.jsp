@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page import="com.daily.dto.FoodDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -45,18 +46,10 @@
 			<td><input type="text" placeholder="식품명" name="name"></td><td><input type="submit" value="검색"></td>
 		</form>
 	</tr>
-	<tr><th>메뉴명</th><th>분량</th><th>탄수화물</th><th>당류</th><th>단백질</th><th>지방</th><th>나트륨</th></tr>
-	<%for (FoodDTO dto : list) {%>
-	<tr>
-		<td><%=dto.getName() %></td>
-		<td><%=dto.getAmount() %></td>
-		<td><%=dto.getCarb() %></td>
-		<td><%=dto.getSugar() %></td>
-		<td><%=dto.getProtein() %></td>
-		<td><%=dto.getFat() %></td>
-		<td><%=dto.getSodium() %></td>
-	</tr>
-	<%} %>
+	<tr><th>메뉴명</th><th>분량(g)</th><th>열량(kcal)</th><th>탄수화물(g)</th><th>당류(g)</th><th>단백질(g)</th><th>지방(g)</th><th>나트륨(mg)</th></tr>
+	<c:forEach var="dto" items="${list }">
+	<tr><td>${dto.name}</td><td>${dto.amount}</td><td>${dto.energy}</td><td>${dto.carb}</td><td>${dto.sugar}</td><td>${dto.protein}</td><td>${dto.fat}</td><td>${dto.sodium}</td></tr>
+	</c:forEach>
 	</table>
 </body>
 </html>

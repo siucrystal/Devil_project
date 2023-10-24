@@ -32,14 +32,13 @@ public class FoodController {
 		return view;
 	}
 	@PostMapping("foodlist")
-	public String foodList(FoodDTO dto) {
+	public ModelAndView foodList(FoodDTO dto) {
 		System.out.println("foodlist-dto");
-		System.out.println(dto.getCategory());
 		List<FoodDTO> list = service.getFoodListSearch(dto);
 		ModelAndView mav = new ModelAndView();
 		view ="food/foodlist";
 		mav.addObject("list",list);
 		mav.setViewName(view);
-		return view;
+		return mav;
 	}
 }
