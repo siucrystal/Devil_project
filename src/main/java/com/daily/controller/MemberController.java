@@ -41,6 +41,7 @@ public class MemberController {
 		
 		ModelAndView mav = new ModelAndView();
 		if(getdto != null && dto.getPw().equals(getdto.getPw())) {
+			session.setAttribute("id",getdto.getId());
 			session.setAttribute("name",getdto.getName());
 			mav.setViewName("redirect: ../mypage/main");
 		} else {
