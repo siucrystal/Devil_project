@@ -19,7 +19,8 @@ import com.daily.service.RecipeService;
 public class RecipeController {
 	private int currentPage = 1;
 	private int viewNum = 0;
-		
+	private int startPage = 1;
+	private int endPage = 10;
 	@Autowired
 	@Qualifier("recipeServiceImpl")
 	RecipeService service;
@@ -28,7 +29,6 @@ public class RecipeController {
 	@RequestMapping("main")
 	public String main(Model model,@RequestParam Map<String,String> map,Integer pageNum) {
 		if(map.get("category") == null) {
-			System.out.println("ddd");
 			map.put("category", "");
 		}
 		if(map.get("ingredient") == null) {
@@ -37,7 +37,8 @@ public class RecipeController {
 		if(pageNum == null) {
 			pageNum = 1;
 		}
-		System.out.println(map.get("category")+"dfasdfsd");
+		
+		currentPage = pageNum;
 		
 		Map<String,Integer> pageMap = new HashMap();
 		viewNum = (pageNum-1) * 10;
@@ -46,8 +47,46 @@ public class RecipeController {
 		ArrayList<String> ingredient_category = service.getIngredientCategory();
 		ArrayList<RecipeDTO> ingredient_list = service.getIngredient(map,pageMap);
 		int totalpage = service.getIngredientTotalCount(map);
-		System.out.println(totalpage);
 		
+		if(endPage <= 10 && totalpage < 10) {
+			endPage = totalpage;
+		} else if(endPage < 10 && totalpage > 10) {
+			endPage = 10;
+			startPage = 1;
+		}
+		
+		if(currentPage < 1) {
+			currentPage = 1;
+		}
+		if(totalpage != 0 && currentPage > totalpage) {
+			currentPage = totalpage;
+		}
+				
+		if(currentPage > endPage) {
+			startPage += 10;
+			endPage += 10;
+			if(endPage > totalpage) {
+				endPage = totalpage;
+			}
+		}
+
+		if(currentPage < startPage) {
+			startPage -= 10;
+			endPage -= 10;
+			if(startPage < 1) {
+				startPage = 1;
+			}
+		}
+		
+		if(totalpage == 0) {
+			currentPage = 1;
+			startPage = 1;
+			endPage = 1;
+		}
+		
+		model.addAttribute("start",startPage);
+		model.addAttribute("end",endPage);
+		model.addAttribute("currentPage",currentPage);
 		model.addAttribute("pageNum",totalpage);
 		model.addAttribute("category",map.get("category"));
 		model.addAttribute("ingredient",map.get("ingredient"));

@@ -46,9 +46,17 @@
 </div>
 <div>
 	<ul>
-		<c:forEach var="i" begin="1" end="${pageNum}">
+	<c:if test="${currentPage >= 1 }">
+		<c:if test="${currentPage > 1}">
+			<li><a href="main?pageNum=${currentPage-1}&category=${category}&ingredient=${ingredient}">이전</a></li>
+		</c:if>
+		<c:forEach var="i" begin="${start}" end="${end}">
 			<li><a href="main?pageNum=${i}&category=${category}&ingredient=${ingredient}">${i}</a></li>
 		</c:forEach>
+		<c:if test="${currentPage < pageNum }">
+			<li><a href="main?pageNum=${currentPage+1}&category=${category}&ingredient=${ingredient}">다음</a></li>
+		</c:if>
+	</c:if>
 	</ul>
 </div>
 
