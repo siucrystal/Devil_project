@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.daily.mapper.RecipeMapper">
+	<select id="getIngredientCategory" resultType="String">
+		select category from ingredient group by category;
+	</select>
+	<select id="getIngredient" parameterType="Map" resultType="recipeDTO">
+		select name,category,amount,energy,carb,sugar,protein,fat,sodium from ingredient where category like concat('%',#{param1.category},'%') and name like concat('%',#{param1.ingredient},'%') limit 10 offset #{param2.viewnum};
+	</select>
+	<select id="getIngredientTotalCount" parameterType="Map" resultType="int">
+		select count(*) from ingredient where category like concat('%',#{category},'%') and name like concat('%',#{ingredient},'%');
+	</select>
+</mapper>
