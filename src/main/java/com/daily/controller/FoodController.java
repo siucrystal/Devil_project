@@ -1,5 +1,6 @@
 package com.daily.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,11 +8,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.daily.dto.FoodDTO;
+import com.daily.dto.PageDTO;
 import com.daily.service.FoodService;
 
 @Controller
@@ -22,23 +23,33 @@ public class FoodController {
 	@Autowired
 	@Qualifier("foodServiceImpl")
 	FoodService service;
-	
+
 	@GetMapping("foodlist")
-	public String foodList(Model model) {
+	public String foodList(Model model,
+			@RequestParam(value="page", required = false, defaultValue = "1" ) int page) {
 		System.out.println("foodlist");
-		List<FoodDTO> list = service.getFoodList();
+		
+		List<FoodDTO> list = service.getFoodList(page);
+		PageDTO pageDTO = service.getPageParam(page);
+		
+		List<FoodDTO> category = service.getCategory();
+		
+		System.out.println(pageDTO);
+		
 		model.addAttribute("list",list);
+		model.addAttribute("paging",pageDTO);
+		model.addAttribute("category",category);
 		view ="food/foodlist";
 		return view;
 	}
-	@PostMapping("foodlist")
-	public ModelAndView foodList(FoodDTO dto) {
-		System.out.println("foodlist-dto");
-		List<FoodDTO> list = service.getFoodListSearch(dto);
-		ModelAndView mav = new ModelAndView();
-		view ="food/foodlist";
-		mav.addObject("list",list);
-		mav.setViewName(view);
-		return mav;
-	}
+//	@PostMapping("foodlist")
+//	public ModelAndView foodList(FoodDTO dto, Pageable pageable) {
+//		System.out.println("foodlist-dto");
+//		List<FoodDTO> list = service.getFoodListSearch(dto);
+//		ModelAndView mav = new ModelAndView();
+//		view ="food/foodlist";
+//		mav.addObject("list",list);
+//		mav.setViewName(view);
+//		return mav;
+//	}
 }
