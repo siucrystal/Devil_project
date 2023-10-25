@@ -6,9 +6,9 @@ import com.daily.dto.FoodDTO;
 import com.daily.dto.PageDTO;
 
 public interface FoodService {
-	List<FoodDTO> getFoodList(int page);
-	PageDTO getPageParam(int page);
+	List<FoodDTO> getFoodList(PageDTO dto);
+	PageDTO getPageParam(PageDTO dto);
 
-	List<FoodDTO> getFoodListSearch(int page, FoodDTO dto);
+	List<FoodDTO> getFoodListSearch(FoodDTO dto);
 	List<FoodDTO> getCategory();
 }

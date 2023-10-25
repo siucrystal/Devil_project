@@ -14,13 +14,14 @@
 <body>
 	<table border="1">
 	<tr>
-		<form action="foodlist" method="post" >
+		<form action="foodlist" method="get" >
 			<td><select name="category">
+					<option value="">전체</option>
 				<c:forEach var="dto" items="${category }">
 					<option value="${dto.category}">${dto.category}</option>
 				</c:forEach>
 			</select></td>
-			<td><input type="text" placeholder="식품명" name="name"></td><td><input type="submit" value="검색"></td>
+			<td><input type="text" placeholder="식품명" name="name" value="${dto.name }"></td><td><input type="submit" value="검색"></td>
 		</form>
 	</tr>
 	<tr><th>메뉴명</th><th>분량(g)</th><th>열량(kcal)</th><th>탄수화물(g)</th><th>당류(g)</th><th>단백질(g)</th><th>지방(g)</th><th>나트륨(mg)</th></tr>
@@ -35,7 +36,7 @@
 				<span></span>
 			</c:when>
 			<c:otherwise>
-				<a href="/daily/food/foodlist?page=${paging.page-1}">prev</a>
+				<a href="/daily/food/foodlist?page=${paging.page-1}&category=${paging.category}&name=${paging.name}">prev</a>
 			</c:otherwise>
 		</c:choose>
 		
@@ -45,7 +46,7 @@
 				<a>${i}</a>
 			</c:when>
 			<c:otherwise>
-				<a href="/daily/food/foodlist?page=${i}">${i}</a>
+				<a href="/daily/food/foodlist?page=${i}&category=${paging.category}&name=${paging.name}">${i}</a>
 			</c:otherwise>
 			</c:choose>			
 		</c:forEach>
@@ -54,7 +55,7 @@
 			<c:when test="${paging.page >= paging.maxPage }">
 			</c:when>
 			<c:otherwise>
-				<a href="/daily/food/foodlist?page=${paging.page+1}">next</a>
+				<a href="/daily/food/foodlist?page=${paging.page+1}&category=${paging.category}&name=${paging.name}">next</a>
 			</c:otherwise>
 		</c:choose>
 	</div>

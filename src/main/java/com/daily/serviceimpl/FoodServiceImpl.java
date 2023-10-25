@@ -22,12 +22,15 @@ public class FoodServiceImpl implements FoodService {
 	int pageLimit = 10;
 	int blockLimit = 10;
 	@Override
-	public List<FoodDTO> getFoodList(int page) {
-	
+	public List<FoodDTO> getFoodList(PageDTO dto) {
+		
+		int page = dto.getPage();
 		int pageStart = (page-1) * pageLimit;
-		Map<String, Integer> pagingParams = new HashMap();
+		Map<String, Object> pagingParams = new HashMap();
 		pagingParams.put("start", pageStart);
 		pagingParams.put("limit", pageLimit);
+		pagingParams.put("category", dto.getCategory());
+		pagingParams.put("name", dto.getName());
 		List<FoodDTO> getFoodList = food.getFoodList(pagingParams); 
 		
 		return getFoodList;
@@ -35,8 +38,9 @@ public class FoodServiceImpl implements FoodService {
 
 
 	@Override
-	public PageDTO getPageParam(int page) {
-		int boardCount = food.boardCount();
+	public PageDTO getPageParam(PageDTO dto) {
+		int page = dto.getPage();
+		int boardCount = food.boardCount(dto);
 		
 		int maxPage = (int) (Math.ceil((double)boardCount / pageLimit));
 		
@@ -47,14 +51,12 @@ public class FoodServiceImpl implements FoodService {
 		if(endPage > maxPage) {
 			endPage = maxPage;
 		}
-		PageDTO pageDTO = new PageDTO();
-		pageDTO.setPage(page);
-		pageDTO.setMaxPage(maxPage);
-		pageDTO.setStartPage(startPage);
-		pageDTO.setMaxPage(maxPage);
-		pageDTO.setEndPage(endPage);
+		dto.setMaxPage(maxPage);
+		dto.setStartPage(startPage);
+		dto.setMaxPage(maxPage);
+		dto.setEndPage(endPage);
 		
-		return pageDTO;
+		return dto;
 	}
 
 	@Override
@@ -63,8 +65,8 @@ public class FoodServiceImpl implements FoodService {
 	}
 	
 	@Override
-	public List<FoodDTO> getFoodListSearch(int page, FoodDTO dto) {
-		return null;
+	public List<FoodDTO> getFoodListSearch(FoodDTO dto) {
+		return food.getFoodListSearch(dto);
 	}
 
 

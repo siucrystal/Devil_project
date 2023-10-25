@@ -16,6 +16,5 @@ public class FoodDTO {
 	private double sugar;
 	private double protein;
 	private double fat;
-	private double sodium;
-	
+	private double sodium;	
 }
