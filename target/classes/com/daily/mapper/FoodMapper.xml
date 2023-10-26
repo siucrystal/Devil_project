@@ -4,14 +4,38 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.daily.mapper.FoodMapper">
-	<select id="getFoodList" resultType="foodDTO">
+	<!-- 리스트 -->
+	<select id="getFoodList" parameterType="java.util.HashMap" resultType="foodDTO" >
         <![CDATA[
-        select * from food;       
+        select * from food 
+        where category like CONCAT('%',#{category},'%') 
+        and name like CONCAT('%',#{name},'%') 
+        limit #{start}, #{limit} ;       
         ]]>
-    </select>
-	<select id="getFoodListSearch" parameterType="foodDTO" resultType="foodDTO">
+	</select>
+	
+	<select id="boardCount" parameterType="PageDTO" resultType="Integer">
         <![CDATA[
-        select * from food where category= #{category} and name=#{name};       
+        select count(*) from food 
+        where category like CONCAT('%',#{category},'%') 
+        and name like CONCAT('%',#{name},'%') ;       
         ]]>
-    </select>
+	</select>
+	
+	<select id="getCategory" resultType="FoodDTO">
+        <![CDATA[
+        select category from food group by category;       
+        ]]>
+	</select>
+
+	<!-- 검색 리스트 -->
+	<select id="getFoodListSearch" parameterType="foodDTO"
+		resultType="foodDTO">
+        <![CDATA[
+        select * from food where category like CONCAT('%',#{category},'%') and name like CONCAT('%',#{name},'%');       
+        ]]>
+	</select>
+	
+	
+
 </mapper>

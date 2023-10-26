@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FoodDTO {
+	private int idx;
 	private String name;
 	private String category;
 	private int amount;
@@ -17,5 +18,4 @@ public class FoodDTO {
 	private double protein;
 	private double fat;
 	private double sodium;
-	
 }

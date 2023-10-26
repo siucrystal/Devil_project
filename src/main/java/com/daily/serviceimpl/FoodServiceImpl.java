@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.daily.dto.FoodDTO;
+import com.daily.dto.MyFoodDTO;
 import com.daily.dto.PageDTO;
 import com.daily.mapper.FoodMapper;
 import com.daily.service.FoodService;
@@ -22,12 +23,15 @@ public class FoodServiceImpl implements FoodService {
 	int pageLimit = 10;
 	int blockLimit = 10;
 	@Override
-	public List<FoodDTO> getFoodList(int page) {
-	
+	public List<FoodDTO> getFoodList(PageDTO dto) {
+		
+		int page = dto.getPage();
 		int pageStart = (page-1) * pageLimit;
-		Map<String, Integer> pagingParams = new HashMap();
+		Map<String, Object> pagingParams = new HashMap();
 		pagingParams.put("start", pageStart);
 		pagingParams.put("limit", pageLimit);
+		pagingParams.put("category", dto.getCategory());
+		pagingParams.put("name", dto.getName());
 		List<FoodDTO> getFoodList = food.getFoodList(pagingParams); 
 		
 		return getFoodList;
@@ -35,8 +39,9 @@ public class FoodServiceImpl implements FoodService {
 
 
 	@Override
-	public PageDTO getPageParam(int page) {
-		int boardCount = food.boardCount();
+	public PageDTO getPageParam(PageDTO dto) {
+		int page = dto.getPage();
+		int boardCount = food.boardCount(dto);
 		
 		int maxPage = (int) (Math.ceil((double)boardCount / pageLimit));
 		
@@ -47,27 +52,39 @@ public class FoodServiceImpl implements FoodService {
 		if(endPage > maxPage) {
 			endPage = maxPage;
 		}
-		PageDTO pageDTO = new PageDTO();
-		pageDTO.setPage(page);
-		pageDTO.setMaxPage(maxPage);
-		pageDTO.setStartPage(startPage);
-		pageDTO.setMaxPage(maxPage);
-		pageDTO.setEndPage(endPage);
+		dto.setMaxPage(maxPage);
+		dto.setStartPage(startPage);
+		dto.setMaxPage(maxPage);
+		dto.setEndPage(endPage);
 		
-		return pageDTO;
+		return dto;
 	}
 
 	@Override
 	public List<FoodDTO> getCategory() {
 		return food.getCategory();
 	}
-	
+
+
 	@Override
-	public List<FoodDTO> getFoodListSearch(int page, FoodDTO dto) {
+	public List<MyFoodDTO> setMyFood(Map<String,Object> map) {
+		int idx = (Integer) map.get("idx");
+		String id = (String) map.get("id");
+		
+		
+		
+		MyFoodDTO dto = new MyFoodDTO();
+		dto.setMember_id(id);
+		
+		
 		return null;
 	}
 
 
+	@Override
+	public List<FoodDTO> getFoodone(int idx) {
+		return food.getFoodOne(idx); 
+	}
 
 
 }

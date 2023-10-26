@@ -1,0 +1,86 @@
+/* 전체 페이지 스타일링 */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+/* .food 클래스 스타일링 */
+.food {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* .foodlist 및 .myfood 스타일링 */
+.foodlist, .myfood {
+  background-color: #fff;
+  padding: 20px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* .search 스타일링 */
+.search {
+  margin-bottom: 20px;
+}
+
+/* 검색 양식 스타일링 */
+form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+select, input[type="text"], input[type="submit"] {
+  margin: 5px;
+  padding: 5px;
+}
+
+/* .menu_head 스타일링 */
+.menu_head {
+  font-weight: bold;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+/* .menu_body 스타일링 */
+.menu_body {
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 버튼 스타일링 */
+button.keep {
+  background-color: #008CBA;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* 페이지네이션 스타일링 */
+.button {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+a {
+  margin: 0 5px;
+  text-decoration: none;
+  color: #008CBA;
+}
+
+a:hover {
+  text-decoration: underline;
+}
