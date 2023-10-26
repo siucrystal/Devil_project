@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.daily.mapper.WaterMapper">
+
+        
+    <select id="getOne" parameterType="String">
+        <![CDATA[
+        	select * from member_spec where id = #{id};
+        ]]>
+    </select>     
+    <select id="getWaterOne" parameterType="String">
+        <![CDATA[
+        	select * from member_spec where id = #{id};
+        ]]>
+    </select>     
+    <update id="WaterUpdate" parameterType="waterDTO">
+        <![CDATA[
+        	update member_spec set water = water + #{water}, height = #{height}, weight = #{weight}, waterguide = #{waterguide} where id = #{id};
+        ]]>
+    </update>     
+        
+    <insert id="getWaterAccure" parameterType="waterDTO">
+        <![CDATA[
+        	insert into member_spec values(#{id}, #{waterguide}, #{water}, #{height}, #{weight});
+        ]]>
+    </insert>     
+
+</mapper>
