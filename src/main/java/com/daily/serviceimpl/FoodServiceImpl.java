@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.daily.dto.FoodDTO;
+import com.daily.dto.MyFoodDTO;
 import com.daily.dto.PageDTO;
 import com.daily.mapper.FoodMapper;
 import com.daily.service.FoodService;
@@ -63,13 +64,27 @@ public class FoodServiceImpl implements FoodService {
 	public List<FoodDTO> getCategory() {
 		return food.getCategory();
 	}
-	
+
+
 	@Override
-	public List<FoodDTO> getFoodListSearch(FoodDTO dto) {
-		return food.getFoodListSearch(dto);
+	public List<MyFoodDTO> setMyFood(Map<String,Object> map) {
+		int idx = (Integer) map.get("idx");
+		String id = (String) map.get("id");
+		
+		
+		
+		MyFoodDTO dto = new MyFoodDTO();
+		dto.setMember_id(id);
+		
+		
+		return null;
 	}
 
 
+	@Override
+	public List<FoodDTO> getFoodone(int idx) {
+		return food.getFoodOne(idx); 
+	}
 
 
 }

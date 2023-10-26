@@ -1,0 +1,1 @@
+// src="<%=contextPath %>/resources/js/food/food.js">
