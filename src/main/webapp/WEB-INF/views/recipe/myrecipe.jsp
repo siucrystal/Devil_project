@@ -14,7 +14,6 @@
 
 </head>
 <body>
-
 <div class="container">
 <!-- 나만의 레시피 내역 -->
 <div class="myrecipe">

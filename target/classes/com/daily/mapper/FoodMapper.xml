@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         ]]>
 	</select>
 	
-	<select id="boardCount" parameterType="PageDTO" resultType="Integer">
+	<select id="boardCount" parameterType="pageDTO" resultType="Integer">
         <![CDATA[
         select count(*) from food 
         where category like CONCAT('%',#{category},'%') 
@@ -27,15 +27,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         select category from food group by category;       
         ]]>
 	</select>
-
-	<!-- 검색 리스트 -->
-	<select id="getFoodListSearch" parameterType="foodDTO"
-		resultType="foodDTO">
+	
+	<!-- 음식 담기 -->
+	
+	<select id="getFoodOne" parameterType="int" resultType="foodDTO">
         <![CDATA[
-        select * from food where category like CONCAT('%',#{category},'%') and name like CONCAT('%',#{name},'%');       
+        select * from food where idx = #{idx};       
         ]]>
 	</select>
-	
-	
+
+	<insert id="setMyFoodList" parameterType="java.util.HashMap" >
+        <![CDATA[
+        insert into allfood(member_id)
+        ]]>
+	</insert>
+
 
 </mapper>

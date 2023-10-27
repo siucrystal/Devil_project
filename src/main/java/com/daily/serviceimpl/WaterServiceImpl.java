@@ -1,4 +1,4 @@
-package com.daily.serviceimpl;
+package com.daily.serviceImpl;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;

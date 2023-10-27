@@ -13,11 +13,11 @@
       <img class="logo" src="" alt="logo">
       <nav>
          <ul class="nav_links">
-            <li><a href="#">My page</a></li>
-            <li><a href="#">Recipe</a></li>
+            <li><a href="<%=request.getContextPath()%>/mypage/main">My page</a></li>
+            <li><a href="<%=request.getContextPath()%>/recipe/main">Recipe</a></li>
          </ul>
       </nav>
-      <a class="cta" href="#"><button>Log out</button></a>
+      <a class="cta" href="<%=request.getContextPath() %>/member/logout"><button class="logout">Log out</button></a>
    </header>
 </body>
 </html>

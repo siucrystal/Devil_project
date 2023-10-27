@@ -7,15 +7,8 @@ header {
    background-color: #77b6b6;
 }
 
-li, a, button {
-   font-family: "Poppins", sans-serif;
-   font-weight: 500;
-   font-size: 15px;
-   color: white;
-   text-decoration: none;
-}
-
 header {
+   font-family: "Poppins", sans-serif;
    display: flex;
    justify-content: space-between;
    align-items: center;
@@ -33,26 +26,37 @@ header {
 .nav_links li{
    display: inline-block;
    padding: 0px 20px;
+   font-weight: 500;
+   font-size: 15px;
+   color:white;
 }
 
 .nav_links li a {
    transition: all 0.3s ease 0s;
+   text-decoration: none;
+   font-weight: 500;
+   color:white;
+   font-size: 15px;
 }
 
 .nav_links li a:hover {
    color: #f1f7b5;
 }
 
-button {
+.logout {
+   font-family: "Poppins", sans-serif;
+   font-weight: 500;
+   font-size: 15px;
    padding: 10px 25px;
    background-color: rgba(0, 0, 0, 0.7);
    border: none;
+   color: white;
    border-radius: 5px;
    cursor: pointer;
    transition: all 0.3s ease 0s;
 }
 
-button:hover {
+.logout:hover {
    color: darkslategray;
    background-color: #f1f7b5;
 }

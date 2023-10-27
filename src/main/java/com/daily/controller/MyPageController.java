@@ -20,7 +20,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.daily.dto.WaterDTO;
 import com.daily.service.WaterService;
-import com.google.gson.JsonObject;
 
 @Controller
 @RequestMapping("mypage")
