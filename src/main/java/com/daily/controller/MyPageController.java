@@ -37,8 +37,6 @@ public class MyPageController {
 	
 	@GetMapping("water")
 	public ModelAndView water(WaterDTO dto, RedirectAttributes ra, HttpSession session) {
-		System.out.println("여기 들어옴?");
-		System.out.println("water DTO " + dto.toString());
 		ModelAndView mav = new ModelAndView();
 		String id = (String)session.getAttribute("id");
 		int rs = water2.getOne(id);
@@ -47,10 +45,8 @@ public class MyPageController {
 			dto = water2.getWaterOne(dto.getId()); 
 			
 		} else {
-			System.out.println("rs : " + rs);
 			rs = water2.getWaterAccure(dto);	
 			dto = water2.getWaterOne(dto.getId());
-			System.out.println("/////////////////////////////////////////////////////////");
 		}
 		
 		mav.setViewName("mypage/main");
@@ -70,12 +66,10 @@ public class MyPageController {
 	    int rs = water2.getOne(id);
 	    
 	    Map<String, Object> response = new HashMap();
-	    System.out.println("rs : "+ rs);
 
 	    if (rs == 1) {
 	        // 만약 rs가 0인 경우
 	        WaterDTO dto = water2.getWaterOne(id);
-	        System.out.println("dto 하.. : "+ dto);
 	        response.put("dto", dto);
 	    }else if (rs == 0) {
 	    	response.put("rs", rs);
