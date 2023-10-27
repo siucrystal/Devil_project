@@ -41,7 +41,7 @@ $(function(){
 		$('.hwAfter').css('display', 'none');
 		$('#waterAter').css('display', 'flex');
 		
-		var waterVolume = Number(waterguide/6);
+		var waterVolume = Number(waterguide / 6);
 		var quo = Number(water/waterVolume);
 		var remain = Number(water%waterVolume);
 		var selectedNumbers = [];
@@ -143,18 +143,15 @@ $(function(){
 				<div class="hwInputBox">
 					<input type="hidden" value="" id="waterHidden">
 					<div class="guide">
-						하루에 드셔야 할 물 총량
-						<div class="waterGuide"></div>
-						(mL)
+						하루에 드셔야 할 물 총량 <div class="waterGuide"></div>(mL)
 					</div>
 					<div class="guide">
 						<div>오늘 드신 물</div>
-						<input type="text" placeholder="ml" id="water" name="water"
-							value=""> (mL) <input type="hidden" id="height" value=""
-							name="height"> <input type="hidden" id="weight" value=""
-							name="weight"> <input type="hidden" id="wGuide" value=""
-							name="waterguide"> <input type="hidden" id="id" name="id"
-							value="<%=id%>">
+						<input type="text" placeholder="ml" id="water" name="water"value=""> (mL) 
+						<input type="hidden" id="height" value=""name="height"> 
+						<input type="hidden" id="weight" value=""name="weight"> 
+						<input type="hidden" id="wGuide" value=""name="waterguide"> 
+						<input type="hidden" id="id" name="id"value="<%=id%>">
 					</div>
 					<input type="submit" value="입력" id="waterBtn">
 				</div>

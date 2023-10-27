@@ -6,9 +6,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.daily.mapper.WaterMapper">
 
         
-    <select id="getOne" parameterType="String">
+    <select id="getOne" parameterType="String" resultType="int">
         <![CDATA[
-        	select * from member_spec where id = #{id};
+        	select water from member_spec where id = #{id};
         ]]>
     </select>     
     <select id="getWaterOne" parameterType="String">
@@ -24,7 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         
     <insert id="getWaterAccure" parameterType="waterDTO">
         <![CDATA[
-        	insert into member_spec values(#{id}, #{waterguide}, #{water}, #{height}, #{weight});
+        	insert into member_spec values(#{id}, #{water},#{waterguide}, #{height}, #{weight});
         ]]>
     </insert>     
 

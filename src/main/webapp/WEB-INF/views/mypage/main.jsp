@@ -17,7 +17,8 @@
 메인화면
 	<div class="wrap">
 		<header>
-			<a href="<%=contextPath %>/mypage/main" class="homeBtn">홈</a>
+			<a href="<%=contextPath %>">홈</a>
+			<a href="<%=contextPath %>/mypage/main">마이페이지</a>
 			<a href="<%=contextPath %>/member/logout">로그아웃</a>
 			<a href="<%=contextPath %>/food/foodlist">음식목록</a>
 			<!-- <a href="#">로그아웃</a> -->

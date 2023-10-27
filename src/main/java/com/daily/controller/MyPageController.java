@@ -45,17 +45,17 @@ public class MyPageController {
 		int rs = water2.getOne(id);
 		if(rs == 1) {
 			rs = water2.WaterUpdate(dto);	
-			dto = water2.getWaterOne(id); 
+			dto = water2.getWaterOne(dto.getId()); 
 			
 		} else {
 			System.out.println("rs : " + rs);
 			rs = water2.getWaterAccure(dto);	
-			dto = water2.getWaterOne(id);
+			dto = water2.getWaterOne(dto.getId());
 			System.out.println("/////////////////////////////////////////////////////////");
 		}
 		
 		mav.setViewName("mypage/main");
-		mav.addObject("id",id);
+		mav.addObject("id",dto.getId());
 		mav.addObject("water",dto.getWater());
 		mav.addObject("height", dto.getHeight());
 		mav.addObject("weight", dto.getWeight());
