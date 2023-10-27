@@ -1,9 +1,9 @@
-function keepdelete(idx) {
-		console.log(idx);
+function keepdelete(idx,name) {
+		console.log(idx,name);
 	    $.ajax({
         url: "deleteData",
         type: "POST",
-        data: {idx},
+        data: {idx,name},
         dataType: "json",
         success: function(data) {
            keepview();               
@@ -15,6 +15,7 @@ function keepdelete(idx) {
 }
 
 function keepitin(idx) {
+    console.log(idx);
     $.ajax({
         url: "insertData",
         type: "POST",
@@ -25,6 +26,20 @@ function keepitin(idx) {
         },
         error: function (xhr, status, error) {
             alert('이미 담겨있는 항목입니다.');
+            console.log(xhr, status, error);
+        }
+    })
+}
+
+function newRecipe() {
+    $.ajax({
+        url: "newRecipe",
+        type: "POST",
+        dataType: "json",
+        success: function(data) {
+            keepview();
+        },
+        error: function (xhr, status, error) {
             console.log(xhr, status, error);
         }
     })
@@ -59,7 +74,7 @@ function keepview() {
             total_sodium += (items.sodium * percent);
             
             
-            str += "<button onclick='keepdelete(" + items.idx + ");'>삭제</button>";
+            str += "<button onclick='keepdelete(" + items.idx + ", \"" + items.recipe_name + "\");'>삭제</button>";
             str += '<h4>'+items.name+'|'+ items.category + '| 1회 제공량(g) : ' + items.amount + '</h4>';
             str += '<span>열량(kcal)</span> | <span>탄수화물(g)</span> | <span>당류(g)</span> | <span>단백질(g)</span> | <span>지방(g)</span> | <span>나트륨(mg)</span> |';
             str += '<span>' + (items.energy * percent).toFixed(2) + '</span> | <span>' + (items.carb * percent).toFixed(2) + '</span> | <span>' + (items.sugar * percent).toFixed(2) + '</span> | <span>' + (items.protein * percent).toFixed(2) + '</span> | <span>' + (items.fat * percent).toFixed(2) + '</span> | <span>' + (items.sodium * percent).toFixed(2) + '</span>';
@@ -129,6 +144,7 @@ function deleteRecipe(name) {
 }
 
 function updateRecipe(name) {
+    $('.user_recipe_nmae').val(name);
     $.ajax({
         url: "updateRecipe",
         type: "POST",
@@ -182,9 +198,15 @@ window.onload = function(){
         if(recipe_name == "") {
             alert("저장할 레시피의 이름을 입력해주세요.")
         } else {
-            console.log(recipe_name);
             recipe_store(recipe_name);
         }
-        
+   });
+   document.querySelector('.new_recipe').addEventListener('click',function() {
+        var userResponse = confirm("저장하지 않은 재료들이 초기화 됩니다. 괜찮으신가요?");
+        if (userResponse) {
+            $('.user_recipe_nmae').val("");
+            newRecipe();
+        }
    })
+
 }

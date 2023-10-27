@@ -5,6 +5,7 @@ public class RecipeDTO {
 	private String id;
 	private String name;
 	private String category;
+	private String recipe_name;
 	private int amount;
 	private double energy;
 	private double carb;
@@ -69,6 +70,25 @@ public class RecipeDTO {
 		this.gram = gram;
 	}
 
+	
+	public RecipeDTO(int idx, String id, String name, String category, String recipe_name, int amount, double energy,
+			double carb, double sugar, double protein, double fat, double sodium, double gram) {
+		super();
+		this.idx = idx;
+		this.id = id;
+		this.name = name;
+		this.category = category;
+		this.recipe_name = recipe_name;
+		this.amount = amount;
+		this.energy = energy;
+		this.carb = carb;
+		this.sugar = sugar;
+		this.protein = protein;
+		this.fat = fat;
+		this.sodium = sodium;
+		this.gram = gram;
+	}
+
 	public int getIdx() {
 		return idx;
 	}
@@ -85,6 +105,15 @@ public class RecipeDTO {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+	
+	
+	public String getRecipe_name() {
+		return recipe_name;
+	}
+
+	public void setRecipe_name(String recipe_name) {
+		this.recipe_name = recipe_name;
 	}
 
 	public String getName() {
@@ -169,10 +198,11 @@ public class RecipeDTO {
 
 	@Override
 	public String toString() {
-		return "RecipeDTO [idx=" + idx + ", id=" + id + ", name=" + name + ", category=" + category + ", amount="
-				+ amount + ", energy=" + energy + ", carb=" + carb + ", sugar=" + sugar + ", protein=" + protein
-				+ ", fat=" + fat + ", sodium=" + sodium + ", gram=" + gram + "]";
+		return "RecipeDTO [idx=" + idx + ", id=" + id + ", name=" + name + ", category=" + category + ", recipe_name="
+				+ recipe_name + ", amount=" + amount + ", energy=" + energy + ", carb=" + carb + ", sugar=" + sugar
+				+ ", protein=" + protein + ", fat=" + fat + ", sodium=" + sodium + ", gram=" + gram + "]";
 	}
+
 
 
 

@@ -132,14 +132,18 @@ public class RecipeController {
 
 	@PostMapping("deleteData")
 	@ResponseBody
-	public int deleteData(int idx,HttpSession session) {
+	public int deleteData(int idx,String name,HttpSession session) {
 		String id = (String)session.getAttribute("id");
-		
+				
 		Map<String,String> map = new HashMap<String, String>();
 		map.put("id", id);
 		map.put("idx", idx + "");
+		map.put("recipe_name", name);
 		
 		int rs = service.deleteIngrdient(map);
+		if(rs == 1 && name != null) {
+			service.deleteUserIngrdient(map);
+		}
 				
 		return rs;
 	}
@@ -179,7 +183,7 @@ public class RecipeController {
 	@ResponseBody
 	public Map<String,ArrayList<UserRecipeDTO>> getUserRecipe(HttpSession session) {
 		String id = (String)session.getAttribute("id");
-	
+		
 		ArrayList<UserRecipeDTO> userRecipeList = service.getUserRecipe(id);
 		Map<String,ArrayList<UserRecipeDTO>> userRecipeData = new HashMap<String, ArrayList<UserRecipeDTO>>();
 		userRecipeData.put("userRecipe", userRecipeList);
@@ -208,11 +212,21 @@ public class RecipeController {
 		map.put("recipe_name", name);
 		service.deleteRecipeStoreIngredient(id);
 		ArrayList<RecipeDTO> userRecipeIngredient = service.getUserRecipeIngredient(map);
+		System.out.println(userRecipeIngredient.toString());
 		for(RecipeDTO dto : userRecipeIngredient) {
 			service.insertIngredient(dto);
 		}
+		
 		int rs = 0;
 		return rs;
+	}
+	
+	@PostMapping("newRecipe")
+	@ResponseBody
+	public int newRecipe(HttpSession session) {
+		String id = (String)session.getAttribute("id");
+		int rs = service.deleteRecipeStoreIngredient(id);
+		return 0;
 	}
 	
 }

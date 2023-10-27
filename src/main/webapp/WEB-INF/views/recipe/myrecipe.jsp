@@ -1,17 +1,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-    String contextPath = request.getContextPath();
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="<%=contextPath %>/resources/css/recipe/recipe.css">
-<script src="<%=contextPath %>/resources/js/recipe/recipe.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/recipe/recipe.css">
+<script src="<%=request.getContextPath() %>/resources/js/recipe/recipe.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<%@include file="../layout/header.jsp" %>
 <title>Daily Balance</title>
+
 </head>
 <body>
 
@@ -26,7 +26,8 @@
 
 <div class="recipe_name">
 	<input type="text" class="user_recipe_nmae" placeholder="레시피 이름">
-	<button class="recipe_store">재료 저장</button>
+	<button class="recipe_store">레시피 저장</button>
+	<button class="new_recipe">새로운 레시피</button>
 </div>
 
 <div class="recipe_kdris">
