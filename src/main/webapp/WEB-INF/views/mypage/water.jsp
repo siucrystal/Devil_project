@@ -102,6 +102,7 @@ $(function(){
 	        		$('.hwBefore').css('display', 'none');
 	        		$('.hwAfter').css('display', 'flex');
 	        		$('#waterAter').css('display', 'none');
+	        		$('.waterGuide').html(r['dto'].waterguide);
 	        		$('#height').val(r['dto'].height);
 	        		$('#weight').val(r['dto'].weight);
 	        		$('#wGuide').val(r['dto'].waterguide);
