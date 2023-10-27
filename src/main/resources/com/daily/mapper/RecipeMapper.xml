@@ -7,10 +7,56 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getIngredientCategory" resultType="String">
 		select category from ingredient group by category;
 	</select>
+	
 	<select id="getIngredient" parameterType="Map" resultType="recipeDTO">
-		select name,category,amount,energy,carb,sugar,protein,fat,sodium from ingredient where category like concat('%',#{param1.category},'%') and name like concat('%',#{param1.ingredient},'%') limit 10 offset #{param2.viewnum};
+		select * from ingredient where category like concat('%',#{param1.category},'%') and name like concat('%',#{param1.ingredient},'%') limit 10 offset #{param2.viewnum};
 	</select>
+	
 	<select id="getIngredientTotalCount" parameterType="Map" resultType="int">
 		select count(*) from ingredient where category like concat('%',#{category},'%') and name like concat('%',#{ingredient},'%');
+	</select>
+	
+	<select id="getIngredientIdx" parameterType="int" resultType="recipeDTO">
+		select * from ingredient where idx = #{idx};
+	</select>
+	
+	<insert id="insertIngredient" parameterType="recipeDTO">
+		insert into keep_ingredient(idx,id,name,category,amount,energy,carb,sugar,protein,fat,sodium,gram) values(#{idx},#{id},#{name},#{category},#{amount},#{energy},#{carb},#{sugar},#{protein},#{fat},#{sodium},#{amount});
+	</insert>
+	
+	<select id="getIngredientID" parameterType="String" resultType="recipeDTO">
+		select * from keep_ingredient where id = #{id};
+	</select>
+	
+	<delete id="deleteIngrdient" parameterType="Map">
+		delete from keep_ingredient where id = #{id} and idx = #{idx};
+	</delete>
+	
+	<update id="updateIngrdientGram" parameterType="Map">
+		update keep_ingredient set gram = #{gram} where id= #{id} and idx = #{idx};
+	</update>
+	
+	<insert id="userRecipeStore">
+		insert into recipe(member_id,recipe_name,amount,category,name,energy,carb,sugar,protein,fat,sodium,gram) values
+		<foreach collection="list" item="item" separator=",">
+			(#{additionalData.id},#{additionalData.name},#{item.amount},#{item.category},#{item.name},#{item.energy},#{item.carb},#{item.sugar},#{item.protein},#{item.fat},#{item.sodium},#{item.gram})
+		</foreach>
+	</insert>
+	
+	<select id="getUserRecipe" parameterType="String" resultType="userRecipeDTO">
+		SELECT member_id,recipe_name,SUM(amount) AS total_amount,SUM(energy) AS total_energy,SUM(carb) AS total_carb,SUM(sugar) AS total_sugar,SUM(protein) AS total_protein,SUM(fat) AS total_fat,SUM(sodium) AS total_sodium,SUM(gram) AS total_gram
+		FROM recipe where member_id= #{id} GROUP BY recipe_name,member_id;
+	</select>
+	
+	<delete id="deleteRecipeStoreIngredient" parameterType="String">
+		delete from keep_ingredient where id=#{id};
+	</delete>
+	
+	<delete id="deleteUserRecipe" parameterType="Map">
+		delete from recipe where member_id=#{id} and recipe_name= #{recipe_name};
+	</delete>
+	
+	<select id="getUserRecipeIngredient" parameterType="Map" resultType="recipeDTO">
+		select idx,member_id as id,name,amount,category,energy,carb,sugar,protein,fat,sodium,gram from recipe where member_id=#{id} and recipe_name=#{recipe_name};
 	</select>
 </mapper>

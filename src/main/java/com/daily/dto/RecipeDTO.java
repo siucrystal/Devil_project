@@ -1,6 +1,8 @@
 package com.daily.dto;
 
 public class RecipeDTO {
+	private int idx;
+	private String id;
 	private String name;
 	private String category;
 	private int amount;
@@ -10,10 +12,16 @@ public class RecipeDTO {
 	private double protein;
 	private double fat;
 	private double sodium;
+	private double gram;
 	
-	public RecipeDTO(String name, String category, int amount, double energy, double carb, double sugar, double protein,
+	public RecipeDTO() {
+		super();
+	}
+	
+	public RecipeDTO(int idx,String name, String category, int amount, double energy, double carb, double sugar, double protein,
 			double fat, double sodium) {
 		super();
+		this.idx = idx;
 		this.name = name;
 		this.category = category;
 		this.amount = amount;
@@ -23,6 +31,60 @@ public class RecipeDTO {
 		this.protein = protein;
 		this.fat = fat;
 		this.sodium = sodium;
+	}
+	
+	
+
+	public RecipeDTO(int idx, String id, String name, String category, int amount, double energy, double carb,
+			double sugar, double protein, double fat, double sodium) {
+		super();
+		this.idx = idx;
+		this.id = id;
+		this.name = name;
+		this.category = category;
+		this.amount = amount;
+		this.energy = energy;
+		this.carb = carb;
+		this.sugar = sugar;
+		this.protein = protein;
+		this.fat = fat;
+		this.sodium = sodium;
+	}
+
+	
+	public RecipeDTO(int idx, String id, String name, String category, int amount, double energy, double carb,
+			double sugar, double protein, double fat, double sodium, double gram) {
+		super();
+		this.idx = idx;
+		this.id = id;
+		this.name = name;
+		this.category = category;
+		this.amount = amount;
+		this.energy = energy;
+		this.carb = carb;
+		this.sugar = sugar;
+		this.protein = protein;
+		this.fat = fat;
+		this.sodium = sodium;
+		this.gram = gram;
+	}
+
+	public int getIdx() {
+		return idx;
+	}
+
+
+	public void setIdx(int idx) {
+		this.idx = idx;
+	}
+
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -96,5 +158,24 @@ public class RecipeDTO {
 	public void setSodium(double sodium) {
 		this.sodium = sodium;
 	}
+
+	public double getGram() {
+		return gram;
+	}
+
+	public void setGram(double gram) {
+		this.gram = gram;
+	}
+
+	@Override
+	public String toString() {
+		return "RecipeDTO [idx=" + idx + ", id=" + id + ", name=" + name + ", category=" + category + ", amount="
+				+ amount + ", energy=" + energy + ", carb=" + carb + ", sugar=" + sugar + ", protein=" + protein
+				+ ", fat=" + fat + ", sodium=" + sodium + ", gram=" + gram + "]";
+	}
+
+
+
+	
 	
 }

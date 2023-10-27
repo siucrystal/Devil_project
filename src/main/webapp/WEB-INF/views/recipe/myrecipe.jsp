@@ -15,7 +15,27 @@
 </head>
 <body>
 
+<div class="container">
+<!-- 나만의 레시피 내역 -->
+<div class="myrecipe">
+	<div class="myrecipe_list">
+	</div>
+</div>
+<!-- 메인 영역 -->
 <div class="recipe_search">
+
+<div class="recipe_name">
+	<input type="text" class="user_recipe_nmae" placeholder="레시피 이름">
+	<button class="recipe_store">재료 저장</button>
+</div>
+
+<div class="recipe_kdris">
+	<span>메뉴명분량(g) | 열량(kcal) | 탄수화물(g) | 당류(g) | 단백질(g) | 지방(g) | 나트륨(mg) </span>
+		<div class="recipe_kdris_info">
+
+		</div>
+</div>
+
 <form action="main" name="recipe_search_form">
 	<input type="hidden" name="pageNum" value="1">
 	<select name="category" class="select_category">
@@ -27,9 +47,10 @@
 	<input type="text" name="ingredient" placeholder="재료검색" value="${ingredient}">
 	<input type="button" class="ingredient_search" name="ingredient_search" value="검색">
 	</form>
-	<div>
+	<div class="recipe_search_info">
 		<c:forEach var="item" items="${ingredient_list}">
 			<div>
+				<span>${item.idx }</span>
 				<span>${item.name}</span> /
 				<span>${item.category}</span> /
 				<span>${item.amount}</span> /	
@@ -39,13 +60,15 @@
 				<span>${item.protein}</span> /
 				<span>${item.fat}</span> /
 				<span>${item.sodium}</span> /
+				<span><Button class="keep" onclick="keepbtn(${item.idx});">담기</Button></span>
 			</div>
 			<hr>
 		</c:forEach>
 	</div>
-</div>
-<div>
-	<ul>
+
+<!-- 페이징 버튼 -->
+<div class="paging_region">
+	<ul class="pagingview">
 	<c:if test="${currentPage >= 1 }">
 		<c:if test="${currentPage > 1}">
 			<li><a href="main?pageNum=${currentPage-1}&category=${category}&ingredient=${ingredient}">이전</a></li>
@@ -59,7 +82,14 @@
 	</c:if>
 	</ul>
 </div>
+</div>
+<!-- 장바구니 영역 -->
+<div class="keep_ingredient">
+	<div class="keep_data">
 
+	</div>
+</div>
+</div>
 <script>
 $(".select_category").val("${category}").prop("selected", true);
 </script>

@@ -4,14 +4,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.daily.dto.RecipeDTO;
+import com.daily.dto.UserRecipeDTO;
 import com.daily.service.RecipeService;
 
 @Controller
@@ -21,6 +26,7 @@ public class RecipeController {
 	private int viewNum = 0;
 	private int startPage = 1;
 	private int endPage = 10;
+		
 	@Autowired
 	@Qualifier("recipeServiceImpl")
 	RecipeService service;
@@ -95,4 +101,119 @@ public class RecipeController {
 		
 		return "recipe/myrecipe";
 	}
+	
+	
+	@PostMapping("getData")
+	@ResponseBody
+	public Map<String,ArrayList<RecipeDTO>> insertData(HttpSession session) {
+		String id = (String)session.getAttribute("id");
+	
+		ArrayList<RecipeDTO> keeplist = service.getIngredientID(id);
+		Map<String,ArrayList<RecipeDTO>> keepData = new HashMap<String, ArrayList<RecipeDTO>>();
+		keepData.put("keep", keeplist);
+		return keepData;
+	}
+	
+	
+	
+	@PostMapping("insertData")
+	@ResponseBody
+	public int getData(int idx,HttpSession session) {
+		String id = (String)session.getAttribute("id");
+		int rs = 0;
+		if(idx > 0) {
+			RecipeDTO dto = service.getIngredientIdx(idx);
+			dto.setId(id);
+			rs = service.insertIngredient(dto);
+		}
+				
+		return rs;
+	}
+
+	@PostMapping("deleteData")
+	@ResponseBody
+	public int deleteData(int idx,HttpSession session) {
+		String id = (String)session.getAttribute("id");
+		
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("idx", idx + "");
+		
+		int rs = service.deleteIngrdient(map);
+				
+		return rs;
+	}
+	
+	@PostMapping("updateGram")
+	@ResponseBody
+	public int updateGram(int idx,double gram,HttpSession session) {
+		String id = (String)session.getAttribute("id");
+		
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("idx", idx + "");
+		map.put("gram", gram + "");
+		
+		int rs = service.updateIngrdientGram(map);
+				
+		return rs;
+	}
+	
+	@PostMapping("recipeStore")
+	@ResponseBody
+	public int recipeStore(String name,HttpSession session) {
+		String id = (String)session.getAttribute("id");
+		
+		ArrayList<RecipeDTO> keeplist = service.getIngredientID(id);
+
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("name", name);
+		service.userRecipeStore(keeplist, map);
+		int rs = service.deleteRecipeStoreIngredient(id);
+		
+		return rs;
+	}
+	
+	@PostMapping("getUserRecipe")
+	@ResponseBody
+	public Map<String,ArrayList<UserRecipeDTO>> getUserRecipe(HttpSession session) {
+		String id = (String)session.getAttribute("id");
+	
+		ArrayList<UserRecipeDTO> userRecipeList = service.getUserRecipe(id);
+		Map<String,ArrayList<UserRecipeDTO>> userRecipeData = new HashMap<String, ArrayList<UserRecipeDTO>>();
+		userRecipeData.put("userRecipe", userRecipeList);
+		
+		return userRecipeData;
+	}
+	
+	@PostMapping("deleteRecipe")
+	@ResponseBody
+	public int deleteRecipe(String name,HttpSession session) {
+		String id = (String)session.getAttribute("id");
+		Map<String,String> userRecipeMap = new HashMap<String,String>();
+		userRecipeMap.put("id", id);
+		userRecipeMap.put("recipe_name",name);
+		
+		int rs = service.deleteUserRecipe(userRecipeMap);
+		return rs;
+	}
+	
+	@PostMapping("updateRecipe")
+	@ResponseBody
+	public int updateRecipe(String name,HttpSession session) {
+		String id = (String)session.getAttribute("id");
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("id", id);
+		map.put("recipe_name", name);
+		service.deleteRecipeStoreIngredient(id);
+		ArrayList<RecipeDTO> userRecipeIngredient = service.getUserRecipeIngredient(map);
+		for(RecipeDTO dto : userRecipeIngredient) {
+			service.insertIngredient(dto);
+		}
+		int rs = 0;
+		return rs;
+	}
+	
 }
+
