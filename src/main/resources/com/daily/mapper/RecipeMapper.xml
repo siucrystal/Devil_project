@@ -39,7 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="userRecipeStore">
 		insert into recipe(member_id,recipe_name,amount,category,name,energy,carb,sugar,protein,fat,sodium,gram) values
 		<foreach collection="list" item="item" separator=",">
-			(#{additionalData.id},#{additionalData.name},#{item.amount},#{item.category},#{item.name},#{item.energy},#{item.carb},#{item.sugar},#{item.protein},#{item.fat},#{item.sodium},#{item.gram})
+			(#{additionalData.id},#{additionalData.recipe_name},#{item.amount},#{item.category},#{item.name},#{item.energy},#{item.carb},#{item.sugar},#{item.protein},#{item.fat},#{item.sodium},#{item.gram})
 		</foreach>
 	</insert>
 	

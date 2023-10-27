@@ -1,9 +1,8 @@
-function keepdelete(idx,name) {
-		console.log(idx,name);
+function keepdelete(idx) {
 	    $.ajax({
         url: "deleteData",
         type: "POST",
-        data: {idx,name},
+        data: {idx},
         dataType: "json",
         success: function(data) {
            keepview();               

@@ -132,18 +132,14 @@ public class RecipeController {
 
 	@PostMapping("deleteData")
 	@ResponseBody
-	public int deleteData(int idx,String name,HttpSession session) {
+	public int deleteData(int idx,HttpSession session) {
 		String id = (String)session.getAttribute("id");
 				
 		Map<String,String> map = new HashMap<String, String>();
 		map.put("id", id);
 		map.put("idx", idx + "");
-		map.put("recipe_name", name);
 		
 		int rs = service.deleteIngrdient(map);
-		if(rs == 1 && name != null) {
-			service.deleteUserIngrdient(map);
-		}
 				
 		return rs;
 	}
@@ -172,7 +168,8 @@ public class RecipeController {
 
 		Map<String,String> map = new HashMap<String, String>();
 		map.put("id", id);
-		map.put("name", name);
+		map.put("recipe_name", name);
+		service.deleteUserRecipe(map);
 		service.userRecipeStore(keeplist, map);
 		int rs = service.deleteRecipeStoreIngredient(id);
 		
