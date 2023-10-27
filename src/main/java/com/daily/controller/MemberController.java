@@ -34,6 +34,10 @@ public class MemberController {
 	public String login() {
 		return "member/login";
 	}
+	@GetMapping("logout")
+	public String logout() {
+		return "member/logout";
+	}
 	
 	@PostMapping("login")
 	public ModelAndView login(MemberDTO dto,HttpSession session) {
