@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="insertIngredient" parameterType="recipeDTO">
-		insert into keep_ingredient(idx,id,name,category,amount,energy,carb,sugar,protein,fat,sodium,gram) values(#{idx},#{id},#{name},#{category},#{amount},#{energy},#{carb},#{sugar},#{protein},#{fat},#{sodium},#{amount});
+		insert into keep_ingredient(idx,id,recipe_name,name,category,amount,energy,carb,sugar,protein,fat,sodium,gram) values(#{idx},#{id},#{recipe_name},#{name},#{category},#{amount},#{energy},#{carb},#{sugar},#{protein},#{fat},#{sodium},#{amount});
 	</insert>
 	
 	<select id="getIngredientID" parameterType="String" resultType="recipeDTO">
@@ -57,6 +57,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<select id="getUserRecipeIngredient" parameterType="Map" resultType="recipeDTO">
-		select idx,member_id as id,name,amount,category,energy,carb,sugar,protein,fat,sodium,gram from recipe where member_id=#{id} and recipe_name=#{recipe_name};
+		select idx,member_id as id,recipe_name,name,amount,category,energy,carb,sugar,protein,fat,sodium,gram from recipe where member_id=#{id} and recipe_name=#{recipe_name};
 	</select>
+	
+	<delete id="deleteUserIngrdient" parameterType="Map">
+		delete from recipe where member_id=#{id} and recipe_name=#{recipe_name} and idx=#{idx};
+	</delete>
 </mapper>

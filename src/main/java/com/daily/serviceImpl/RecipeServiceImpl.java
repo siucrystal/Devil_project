@@ -81,4 +81,8 @@ public class RecipeServiceImpl implements RecipeService{
 	public ArrayList<RecipeDTO> getUserRecipeIngredient(Map<String,String> map) {
 		return recipe.getUserRecipeIngredient(map);
 	}
+	
+	public int deleteUserIngrdient(Map<String,String> map) {
+		return recipe.deleteUserIngrdient(map);
+	}
 }

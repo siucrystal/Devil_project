@@ -24,4 +24,5 @@ public interface RecipeMapper {
 	int deleteRecipeStoreIngredient(String id);
 	int deleteUserRecipe(Map<String,String> map);
 	ArrayList<RecipeDTO> getUserRecipeIngredient(Map<String,String> map);
+	int deleteUserIngrdient(Map<String,String> map);
 }
