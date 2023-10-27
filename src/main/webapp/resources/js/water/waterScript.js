@@ -27,15 +27,7 @@ $(function(){
       	$(this).val($(this).val().replace(/[^0-9]/g,""));
    	});
 		/*$(".waterAter").css({display: 'none'});*/
-	$('#waterBtn').click(function(event){
-		var water = $('#water').val();
-		
-		const hHidden = $('#height').val();
-		const wHidden = $('#weight').val();
-		
-		
-		console.log('오늘 먹은 물 : '+ water + " (mL)");
-	})
+	
 	
 	
 });
