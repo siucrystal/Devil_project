@@ -29,9 +29,11 @@ $(function(){
 		water = 0;
 	}
 	var idChecked = false; // 아이디 확인을 한 번만 수행하도록 플래그 추가
+	console.log("id : "+ "<%=id%>");
 	
 	$('#waterAter').css('display', 'none');
 	if(typeof height == "undefined" || height == "null" || height == 0 || height == "" ) {
+		console.log("height : " + height);
 	}
 	else {
 		console.log("height : " + height);
@@ -77,6 +79,7 @@ $(function(){
 			event.preventDefault();
 			alert("오늘 먹은 물을 입력해주세요");
 		}
+		console.log('오늘 먹은 물 : '+ water + " (mL)");
 	})
 	
 	function getOneIdSumbti() {
@@ -90,8 +93,12 @@ $(function(){
 	        success: function(r) {
 	        	console.log(r);
 	        	if(r['rs'] == 0) {
-	        		console.log("해당 아이디가 수분섭취 등록 하지 않으셨습니다");    	
+	        		console.log("r['rs'] : " + r['rs']);    	
         		}else {
+	        		console.log("r['dto'] : "  + r['dto']);
+	        		console.log("r['dto'].id : "  + r['dto'].id);
+	        		console.log("r['dto'].water : "  + r['dto'].water);
+	        		
 	        		$('.hwBefore').css('display', 'none');
 	        		$('.hwAfter').css('display', 'flex');
 	        		$('#waterAter').css('display', 'none');
@@ -109,7 +116,7 @@ $(function(){
 	
 	 // #waterAter가 inline-block 일 때 아이디 확인을 수행
      if ($('#waterAter').css('display') === 'flex') {
-    	 console.log("나오지 않습니다");
+    	 console.log("아니 야!");
      } else if ($('#waterAter').css('display') === 'none') {
          getOneIdSumbti();
      }
