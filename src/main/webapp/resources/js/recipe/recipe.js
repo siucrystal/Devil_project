@@ -77,7 +77,13 @@ function keepview() {
             str += '<h4>'+items.name+'|'+ items.category + '| 1회 제공량(g) : ' + items.amount + '</h4>';
             str += '<span>열량(kcal)</span> | <span>탄수화물(g)</span> | <span>당류(g)</span> | <span>단백질(g)</span> | <span>지방(g)</span> | <span>나트륨(mg)</span> |';
             str += '<span>' + (items.energy * percent).toFixed(2) + '</span> | <span>' + (items.carb * percent).toFixed(2) + '</span> | <span>' + (items.sugar * percent).toFixed(2) + '</span> | <span>' + (items.protein * percent).toFixed(2) + '</span> | <span>' + (items.fat * percent).toFixed(2) + '</span> | <span>' + (items.sodium * percent).toFixed(2) + '</span>';
-            str += '<input class="inputgram' + items.idx + '" type="number" placeholder="g" value=\"' + items.gram + '\"/><button onclick="gram(' + items.idx + ');">저장</button>';
+            if(items.gram > 0) {
+                str += '<input class="inputgram' + items.idx + '" type="number" placeholder="g" value=\"' + items.gram + '\"/>';
+            } else {
+                str += '<input class="inputgram' + items.idx + '" type="number" placeholder="g" value=\"' + items.amount + '\"/>';
+            }
+            
+            str += '<button onclick="gram(' + items.idx + ');">저장</button>';
             str += '<hr>';	
 
          }

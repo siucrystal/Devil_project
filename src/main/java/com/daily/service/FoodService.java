@@ -5,14 +5,15 @@ import java.util.Map;
 
 import com.daily.dto.FoodDTO;
 import com.daily.dto.MyFoodDTO;
-import com.daily.dto.PageDTO;
 
 public interface FoodService {
-	List<FoodDTO> getFoodList(PageDTO dto);
-	PageDTO getPageParam(PageDTO dto);
-	List<FoodDTO> getCategory();
 	
-	List<MyFoodDTO> setMyFood(Map<String,Object> map);
-	List<FoodDTO> getFoodone(int idx);
+	List<FoodDTO> selectFoodList(FoodDTO foodDTO);
+	FoodDTO selectFoodListCnt(FoodDTO foodDTO);
+	List<FoodDTO> slectCategoryList();
 	
+	List<MyFoodDTO> selectMyFoodList(Map<String, Object> mmylist);
+	List<MyFoodDTO> insertMyFood(Map<String,Object> map);
+	List<MyFoodDTO> updateMyFood(Map<String, Integer> map);	
+	List<MyFoodDTO> deleteMyFood(Map<String, Integer> map);	
 }

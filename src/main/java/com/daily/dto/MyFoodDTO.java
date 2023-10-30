@@ -1,19 +1,17 @@
 package com.daily.dto;
 
-import java.sql.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class MyFoodDTO {
 	private int idx;
-	private String member_id;
+	private String id;
+	private String name;
+	private String category;
 	private int amount;
 	private double energy;
 	private double carb;
@@ -21,6 +19,5 @@ public class MyFoodDTO {
 	private double protein;
 	private double fat;
 	private double sodium;	
-	private Date date;
-	private int food_recipe;
+	private String date;
 }
