@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FoodDTO {
+public class FoodDTO extends PageDTO {
 	private int idx;
 	private String name;
 	private String category;

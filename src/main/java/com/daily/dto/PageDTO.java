@@ -12,7 +12,4 @@ public class PageDTO {
 	private int maxPage;
 	private int startPage;
 	private int endPage;
-	
-	private String category;
-	private String name;
 }

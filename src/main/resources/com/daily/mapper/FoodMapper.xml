@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.daily.mapper.FoodMapper">
 	<!-- 리스트 -->
-	<select id="getFoodList" parameterType="java.util.HashMap" resultType="foodDTO" >
+	<select id="selectFoodList" parameterType="java.util.HashMap" resultType="foodDTO" >
         <![CDATA[
         select * from food 
         where category like CONCAT('%',#{category},'%') 
@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         ]]>
 	</select>
 	
-	<select id="boardCount" parameterType="pageDTO" resultType="Integer">
+	<select id="selectFoodListCnt" parameterType="foodDTO" resultType="Integer">
         <![CDATA[
         select count(*) from food 
         where category like CONCAT('%',#{category},'%') 
@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         ]]>
 	</select>
 	
-	<select id="getCategory" resultType="FoodDTO">
+	<select id="slectCategoryList" resultType="foodDTO">
         <![CDATA[
         select category from food group by category;       
         ]]>
@@ -30,17 +30,49 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 음식 담기 -->
 	
-	<select id="getFoodOne" parameterType="int" resultType="foodDTO">
+	<select id="selectFood" parameterType="int" resultType="foodDTO">
         <![CDATA[
         select * from food where idx = #{idx};       
         ]]>
 	</select>
 
-	<insert id="setMyFoodList" parameterType="java.util.HashMap" >
+	<select id="selectMyFoodList" parameterType="java.util.HashMap" resultType="myfoodDTO">
         <![CDATA[
-        insert into allfood(member_id)
+        select * from allfood where id = #{id} and date_format(date,'%y-%m-%d') = #{date} ;
+        ]]>
+	</select>
+
+	<insert id="insertMyFood" parameterType="myfoodDTO" >
+        <![CDATA[
+        insert into allfood(id,name,amount,energy,carb,sugar,protein,fat,sodium,date)
+        values(#{id},#{name},#{amount},#{energy},#{carb},#{sugar},#{protein},#{fat},#{sodium},#{date})
         ]]>
 	</insert>
-
-
+	
+	<update id="updateMyFood" parameterType="myfoodDTO">
+		<![CDATA[
+	        update allfood 
+	        	set amount=${amount}
+	        		,energy=${energy}
+	        		,carb=${carb}
+	        		,sugar=${sugar}
+	        		,protein=${protein}
+	        		,fat=${fat}
+	        		,sodium=${sodium} 
+	        	where idx = #{idx} 
+        ]]>
+	</update>
+	
+	<select id="selectMyFood" resultType="MyfoodDTO">
+        <![CDATA[
+        select * from allfood where idx = #{idx};       
+        ]]>
+	</select>
+	
+	<delete id="deleteMyFood" parameterType="myfoodDTO" >
+        <![CDATA[
+        delete from allfood where idx = #{idx} 
+        ]]>
+	</delete>
+	
 </mapper>
