@@ -8,24 +8,28 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <head>
 <meta charset="UTF-8">
+ <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main.css">
 <title>Daily Balance</title>
 <%@include file="../layout/header.jsp" %>
 </head>
 <body>
-	<div class="wrap">
-		<main>
-			<div class="mainBoard">
-				<div class="gaugeBox">
-					<div class="gInnerBox"></div>	
-				</div>
-				<div class="writeListBox">
-					<div class="wlInnerBox">
-						<jsp:include page="./water.jsp"></jsp:include> 
-					</div>
-				</div>
-			</div>
-		</main>
-	
-	</div>
+    <main class="flex_main">
+      <aside class="flex_aside">
+         <%@include file="./eatlist.jsp" %>
+      </aside>
+      <div class="container">
+         <div class="box box1">
+            <div class="wlInnerBox">
+               <jsp:include page="./water.jsp"></jsp:include> 
+            </div>
+         </div>
+         <div class="box2"><%@include file="./foodlist.jsp" %></div>
+         <div class="box">main3</div>
+      </div>
+    </main>
+    <footer class="flex_footer">
+      Footer
+    </footer>
+   </div>
 </body>
 </html>

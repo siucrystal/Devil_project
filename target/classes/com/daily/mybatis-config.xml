@@ -6,9 +6,11 @@
 	<typeAliases>
   		<typeAlias type="com.daily.dto.MemberDTO" alias="memberDTO"/>
   		<typeAlias type="com.daily.dto.FoodDTO" alias="foodDTO"/>
+  		<typeAlias type="com.daily.dto.MyFoodDTO" alias="myfoodDTO"/>
   		<typeAlias type="com.daily.dto.PageDTO" alias="PageDTO"/>
   		<typeAlias type="com.daily.dto.WaterDTO" alias="waterDTO"/>
   		<typeAlias type="com.daily.dto.RecipeDTO" alias="recipeDTO"/>
   		<typeAlias type="com.daily.dto.UserRecipeDTO" alias="userRecipeDTO"/>
+  		<typeAlias type="com.daily.dto.KDRIsDTO" alias="kdrisDTO"/>
   	</typeAliases>
 </configuration>

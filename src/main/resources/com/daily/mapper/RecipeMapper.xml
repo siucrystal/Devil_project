@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="insertIngredient" parameterType="recipeDTO">
-		insert into keep_ingredient(idx,id,recipe_name,name,category,amount,energy,carb,sugar,protein,fat,sodium,gram) values(#{idx},#{id},#{recipe_name},#{name},#{category},#{amount},#{energy},#{carb},#{sugar},#{protein},#{fat},#{sodium},#{amount});
+		insert into keep_ingredient(idx,id,recipe_name,name,category,amount,energy,carb,sugar,protein,fat,sodium,gram) values(#{idx},#{id},#{recipe_name},#{name},#{category},#{amount},#{energy},#{carb},#{sugar},#{protein},#{fat},#{sodium},#{gram});
 	</insert>
 	
 	<select id="getIngredientID" parameterType="String" resultType="recipeDTO">

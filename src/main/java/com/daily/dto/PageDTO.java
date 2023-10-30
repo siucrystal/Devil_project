@@ -8,8 +8,8 @@ import lombok.ToString;
 @Setter
 @ToString
 public class PageDTO {
-	private int page;
-	private int maxPage;
-	private int startPage;
-	private int endPage;
+   private int page;
+   private int maxPage;
+   private int startPage;
+   private int endPage;
 }

@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.daily.dto.KDRIsDTO;
+import com.daily.dto.MyFoodDTO;
 import com.daily.dto.RecipeDTO;
 import com.daily.dto.UserRecipeDTO;
+import com.daily.service.FoodService;
 import com.daily.service.RecipeService;
 
 @Controller
@@ -30,7 +33,10 @@ public class RecipeController {
 	@Autowired
 	@Qualifier("recipeServiceImpl")
 	RecipeService service;
-
+	
+	@Autowired
+	@Qualifier("foodServiceImpl")
+	FoodService foodservice;
 	
 	@RequestMapping("main")
 	public String main(Model model,@RequestParam Map<String,String> map,Integer pageNum) {
@@ -225,6 +231,27 @@ public class RecipeController {
 		int rs = service.deleteRecipeStoreIngredient(id);
 		return 0;
 	}
+	
+		@PostMapping("selectIngredeintList")
+	   @ResponseBody
+	   public Map<String, Object> selectEatList(HttpSession session){
+	      
+	      String id = (String)session.getAttribute("id");
+	      // kdris
+	      KDRIsDTO kdris = foodservice.selectKdris(id);
+	      // myeat
+	      ArrayList<RecipeDTO> keeplist = service.getIngredientID(id);
+	      ArrayList<KDRIsDTO> kdrislist = new ArrayList<KDRIsDTO>();
+	      kdrislist.add(kdris);
+	      
+	      
+	      Map<String,Object> keepData = new HashMap<String,Object>();
+	      keepData.put("keep", keeplist);
+	      keepData.put("kdris", kdrislist);
+	      
+	      
+	      return keepData;
+	   }
 	
 }
 
