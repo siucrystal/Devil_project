@@ -13,6 +13,8 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="<%=contextPath %>/resources/css/member/forgot.css">
+   <link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/font/font.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
    <script src="<%=contextPath %>/resources/js/member/forgot.js"></script> 
@@ -21,7 +23,13 @@
 </head>
 <script>
 <% if(rs.equals("0")) {%>
-	alert("등록되지 않은 아이디 입니다.");
+swal({
+	title: '<span class=\"custom_text\">error!</span>',
+	html: '<span class=\"custom_text\">등록되지 않은 아이디 입니다.</span>',
+	type: 'error',
+	confirmButtonColor: '#3085d6',
+	confirmButtonText: '확인',
+});
 <%}%>
 </script>
 <body>
