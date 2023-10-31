@@ -10,28 +10,19 @@ body {
 	font-weight: 500;
 }
 
-.swal2-popup .swal2-styled {
-	font-family: 'SCoreDream';
-	font-weight: 500;
-	background-color: #EAEAEA;
-	color:black;
-}
-
-.swal2-popup .swal2-styled:hover {
-	background-color: #525FE1;
-	color:white;
-}
-
 .container {
-	padding: 20px;
+	padding-top: 50px;
+	padding-left: 5%;
+	padding-right: 5%;
 	display: flex;
 }
 /*레시피 리스트 영역*/
 .myrecipe {
-	flex: 1;
+	flex: 1.2;
 	background-color: white;
 	border-radius: 20px;
 	box-shadow: 0px 8px 16px rgba(32, 32, 32, 0.08);
+	height:auto;
 }
 
 .myrecipe_list {
@@ -58,11 +49,18 @@ body {
 	flex-wrap: nowrap;
 	align-items: center;
 	font-size: 14px;
+	gap:18px;
 	margin: 5px 0;
 }
 
-.recipe-list-info span, .recipe-list-values span {
-	margin: 0 10px;
+.recipe-list-values span {
+	margin: 0;
+}
+.recip-info {
+	display:flex;
+	flex-direction: column;
+	gap: 3px;
+	text-align:center;
 }
 
 .recipe-buttons {
@@ -136,7 +134,7 @@ body {
 }
 
 .recipe_kdris_info li {
-	font-weight: bold;
+	font-weight: 400;
 }
 
 /* 레세피 정보 영역*/
@@ -165,7 +163,7 @@ body {
 	font-family: 'SCoreDream';
 	font-weight: 500;
 	height: 40px;
-	width: 600px;
+	width: 400px;
 	text-align: center;
 	border-radius: 10px;
 	background:#f9f9f9;
@@ -261,7 +259,7 @@ body {
 }
 
 .keep_ingredient {
-	flex: 1;
+	flex: 1.2;
 	background-color: white;
 	border-radius: 20px;
 	box-shadow: 0px 8px 16px rgba(32, 32, 32, 0.08);
@@ -323,6 +321,7 @@ body {
 .recipe_search_info div span:nth-child(2) {
 	flex: 2; /* 예: name 부분의 너비를 두 배로 늘립니다 */
 	padding: 5px;
+	font-size:14px;
 }
 
 /* 장바구니 영역 css */
@@ -342,15 +341,12 @@ body {
 }
 
 .nutrition-info, .nutrition-values {
-	display: flex;
-	font-size: 0.8rem;
-	align-items: center;
-	margin-bottom: 10px;
-	margin-top: 5px;
-}
-
-.nutrition-info span, .nutrition-values span {
-	margin: 0 15px;
+    display: flex;
+    font-size: 14px;
+    gap: 25px;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 5px;
 }
 
 #input-gram {

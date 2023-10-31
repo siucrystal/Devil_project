@@ -15,6 +15,8 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
    <link rel="stylesheet" href="<%=contextPath %>/resources/css/member/login.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
    <title>Daily Balance</title>
 </head>
 <body>
@@ -29,7 +31,7 @@ window.onload = function(){
 	}
 </script>
    <div class="login">
-      <img src="<%=contextPath %>/resources/imgs/member/login_image.jpg" alt="login image" class="login__img">
+      <img lading="auto" src="https://i.pinimg.com/originals/4d/83/dc/4d83dc364753dc242d1869f3efbd0c92.gif" alt="login image" class="login__img">
       <form action="login" name="login__form" class="login__form" method="POST">
          <h1 class="login__title">Login</h1>
 

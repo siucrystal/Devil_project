@@ -82,7 +82,7 @@ function keepview() {
 				str += '<p>' + items.category + '</p>';
 				str += '<p>1회 제공량(g) : ' + items.amount + '</p>';
 				str += "<div class=\"nutrition-info\">"
-				str += '<span>열량(kcal)</span><span>탄수화물(g)</span><span>당류(g)</span><span>단백질(g)</span><span>지방(g)</span><span>나트륨(mg)</span>';
+				str += '<span class=\"recip-info\">열량<span>(kcal)</span></span><span class=\"recip-info\">탄수화물<span>(g)</span></span><span class=\"recip-info\">당류<span>(g)</span></span><span class=\"recip-info\">단백질<span>(g)</span></span><span class=\"recip-info\">지방<span>(g)</span></span><span class=\"recip-info\">나트륨<span>(mg)</span></span>';
 				str += "</div>"
 				str += "<div class=\"nutrition-values\">"
 				str += '<span>' + (items.energy * percent).toFixed(2) + '</span><span>' + (items.carb * percent).toFixed(2) + '</span><span>' + (items.sugar * percent).toFixed(2) + '</span><span>' + (items.protein * percent).toFixed(2) + '</span><span>' + (items.fat * percent).toFixed(2) + '</span><span>' + (items.sodium * percent).toFixed(2) + '</span>';
@@ -265,7 +265,7 @@ function getUserRecipe() {
 				str += "<div class=\"recipe-list-items\">";
 				str += "<p>레시피 : " + items.recipe_name + "</p>";
 				str += "<div class=\"recipe-list-info\">";
-				str += "<span>분량(g)</span><span>열량(kcal)</span><span>탄수화물(g)</span><span>당류(g)</span><span>단백질(g)</span><span>지방(g)</span><span>나트륨(mg)</span>";
+				str += "<span class=\"recip-info\">분량<span>(g)</span></span><span class=\"recip-info\">열량<span>(kcal)</span></span><span class=\"recip-info\">탄수화물<span>(g)</span></span><span class=\"recip-info\">당류<span>(g)</span></span><span class=\"recip-info\">단백질<span>(g)</span></span><span class=\"recip-info\">지방<span>(g)</span></span><span class=\"recip-info\">나트륨<span>(mg)</span></span>";
 				str += "</div>";
 				str += "<div class=\"recipe-list-values\">"
 				str += '<span>' + items.total_gram.toFixed(2) + '</span><span>' + items.total_energy.toFixed(2) + '</span><span>' + items.total_carb.toFixed(2) + '</span><span>' + items.total_sugar.toFixed(2) + '</span><span>' + items.total_protein.toFixed(2) + '</span><span>' + items.total_fat.toFixed(2) + '</span><span>' + items.total_sodium + '</span>';

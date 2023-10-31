@@ -16,12 +16,14 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="<%=contextPath %>/resources/css/member/register.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
    <script src="<%=contextPath %>/resources/js/member/register.js"></script>
    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
    <title>Daily Balance</title>
    <body>
       <div class="join">
-         <img src="<%=contextPath %>/resources/imgs/member/login_image.jpg" alt="join image" class="join__img">
+          <img lading="auto" src="https://i.pinimg.com/originals/4d/83/dc/4d83dc364753dc242d1869f3efbd0c92.gif" alt="login image" class="join__img">
          <form action="register" name="join__form" class="join__form" method="POST">
             <h1 class="join__title">Join</h1>
             <div class="join__content">

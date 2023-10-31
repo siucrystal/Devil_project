@@ -5,8 +5,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/recipe/recipelayout.css">
 <link rel="stylesheet"
@@ -40,7 +38,7 @@
 					<button id="recipe_button" class="new_recipe">새로운 레시피</button>
 				</div>
 				<ul class="recipe_kdris_list">
-					<li>메뉴명분량(g)</li>
+					<li>재료총량(g)</li>
 					<li>열량(kcal)</li>
 					<li>탄수화물(g)</li>
 					<li>당류(g)</li>

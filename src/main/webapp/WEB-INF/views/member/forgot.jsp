@@ -13,6 +13,8 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="<%=contextPath %>/resources/css/member/forgot.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
    <script src="<%=contextPath %>/resources/js/member/forgot.js"></script> 
    <title>Daily Balance</title>
 
@@ -23,8 +25,9 @@
 <%}%>
 </script>
 <body>
+	
    <div class="pw">
-      <img src="<%=contextPath %>/resources/imgs/member/login_image.jpg" alt="pw image" class="pw__img">
+   <img lading="auto" src="https://i.pinimg.com/originals/4d/83/dc/4d83dc364753dc242d1869f3efbd0c92.gif" alt="login image" class="pw__img">
       <div class="pw__form">
       <form action="forgot" name="forgot__form" method="POST">
          <h1 class="pw__title">Forgot Password</h1>
