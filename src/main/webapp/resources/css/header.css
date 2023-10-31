@@ -1,9 +1,6 @@
-@import
-	url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap')
-	;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 header {
-<<<<<<< HEAD
    box-sizing: border-box;
    padding: 0;
    margin: 0;
@@ -18,32 +15,16 @@ header {
    align-items: center;
    padding: 30px 10%;
     box-shadow: 0 8px 8px rgba(0, 0, 0, .05);
-=======
-	box-sizing: border-box;
-	padding: 0;
-	margin: 0;
-	background-color: white;
-	box-shadow: 0 8px 8px rgba(0, 0, 0, .05);
-}
-
-header {
-	font-family: "Poppins", sans-serif;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 15px 10%;
->>>>>>> 0cb2d4f5f47f1009ecb2f0eec139b62afd3d0ff5
 }
 
 .logo {
-	cursor: pointer;
+   cursor: pointer;
 }
 
 .nav_links {
-	list-style: none;
+   list-style: none;
 }
 
-<<<<<<< HEAD
 .nav_links li{
    display: inline-block;
    padding: 0px 20px;
@@ -80,41 +61,4 @@ header {
 .logout:hover {
    color: #fff;
    background-color: #3b5dcf;
-=======
-.nav_links li {
-	display: inline-block;
-	padding: 0px 20px;
-	font-weight: 500;
-	font-size: 1.2rem;
-	color: black;
-}
-
-.nav_links li a {
-	transition: all 0.3s ease 0s;
-	text-decoration: none;
-	font-weight: 500;
-	color: black;
-	font-size: 1.2rem;
-}
-
-.nav_links li a:hover {
-	color: #525FE1;
-}
-
-.logout {
-	font-family: "Poppins", sans-serif;
-	font-weight: 500;
-	font-size: 15px;
-	padding: 10px 25px;
-	background-color: rgba(0, 0, 0, 0.7);
-	border: none;
-	color: white;
-	border-radius: 5px;
-	cursor: pointer;
-	transition: all 0.3s ease 0s;
-}
-
-.logout:hover {
-	background-color: #525FE1;
->>>>>>> 0cb2d4f5f47f1009ecb2f0eec139b62afd3d0ff5
 }

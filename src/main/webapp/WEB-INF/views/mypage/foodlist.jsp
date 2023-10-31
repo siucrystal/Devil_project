@@ -40,13 +40,22 @@
 				<input type="text" placeholder="식품명" id="name">
 			</span>
 			<span>
-				  <button onclick="selectFoodList()">검색</button>
+				  <button onclick="selectFoodList()" class="cateBtn">검색</button>
 			</span>
 		</div>
 	
 	    <!--메뉴 헤더-->
 	    <div class="menu">
-		<div class="menu_head"><span>메뉴명</span><span>분량(g)</span><span>열량(kcal)</span><span>탄수화물(g)</span><span>당류(g)</span><span>단백질(g)</span><span>지방(g)</span><span>나트륨(mg)</span></div>
+		<div class="menu_head food_head">
+			<span>메뉴명</span>
+			<span class="menu_flexStyle">분량<span>(g)</span></span>
+			<span class="menu_flexStyle">열량<span>(kcal)</span></span>
+			<span class="menu_flexStyle">탄수화물<span>(g)</span></span>
+			<span class="menu_flexStyle">당류<span>(g)</span></span>
+			<span class="menu_flexStyle">단백질<span>(g)</span></span>
+			<span class="menu_flexStyle">지방<span>(g)</span></span>
+			<span class="menu_flexStyle">나트륨<span>(mg)</span></span>
+		</div>
 		
 		<!--메뉴 바디-->
 		<div class="food_body">
@@ -69,9 +78,18 @@
 		</div>
 	    <!--메뉴 헤더-->
 	    <div class="menu">
-		<div class="menu_head"><span>메뉴명</span><span>분량(g)</span><span>열량(kcal)</span><span>탄수화물(g)</span><span>당류(g)</span><span>단백질(g)</span><span>지방(g)</span><span>나트륨(mg)</span></div>
+		<div class="menu_head myfood_head">
+			<span>메뉴명</span>
+			<span class="menu_flexStyle">분량<span>(g)</span></span>
+			<span class="menu_flexStyle">열량<span>(kcal)</span></span>
+			<span class="menu_flexStyle">탄수화물<span>(g)</span></span>
+			<span class="menu_flexStyle">당류<span>(g)</span></span>
+			<span class="menu_flexStyle">단백질<span>(g)</span></span>
+			<span class="menu_flexStyle">지방<span>(g)</span></span>
+			<span class="menu_flexStyle">나트륨<span>(mg)</span></span>
+		</div>
 		<!--메뉴 바디-->
-		<div class=" myfood_body">
+		<div class=" myfood_body ">
 		</div>
 		</div>
 	</div>
