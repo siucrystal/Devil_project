@@ -40,6 +40,11 @@ img {
    height: auto;
 }
 
+.custom_text {
+	font-family: 'SCoreDream';
+	font-weight: 500;
+}
+
 .login {
    position: relative;
    height: 100vh;
@@ -57,7 +62,7 @@ img {
 
 .login__form {
    position: relative;
-   background-color: hsla(0, 0%, 10%, 0.1);
+   background-color: hsla(0, 0%, 10%, 0.8);
    border: 2px solid var(--white-color);
    margin-inline: 1.5rem;
    padding: 2.5rem 1.5rem;
@@ -153,6 +158,11 @@ img {
    font-weight: var(--font-medium);
    cursor: pointer;
    margin-bottom: 2rem;
+}
+
+.login__button:hover {
+	background-color:#525FE1;
+	color:white;
 }
 
 .login__register {
