@@ -132,7 +132,7 @@ public class RecipeController {
 			dto.setId(id);
 			rs = service.insertIngredient(dto);
 		}
-				
+		
 		return rs;
 	}
 
