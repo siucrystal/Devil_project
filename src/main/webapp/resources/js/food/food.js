@@ -21,6 +21,8 @@
 		
 		selectEatList();
 		
+		recommendList();
+		
 	};
 	
 	var didScroll;
@@ -41,6 +43,41 @@
 	  // 동작을 구현
 	}
 
+function recommendList() {
+	$.ajax({
+		url: "recommendList",
+		type: "POST",
+		dataType: "json",
+		success: function(data) {
+			var list = data.list;
+			var put = "";
+			for (let i=0;i < data.list.length;i++){
+				const idx = list[i].idx
+				const name = list[i].name
+				const category = list[i].category
+				const amount = list[i].amount
+				const energy = list[i].energy
+				const carb = list[i].carb
+				const sugar = list[i].sugar
+				const protein = list[i].protein
+				const fat = list[i].fat
+				const sodium = list[i].sodium
+				put += '<section class="card"><div class="card_inner">'
+                put += '<div class="card_inner__content"><div class="category">'+category+'</div>'
+                put += '<div class="name">'+name+'</div>'
+                put += '<div class="text">'+energy+' kcal</div>'
+                put += '</div><div class="card_inner__cta"><button onclick="insertBtn(' + idx + ')">담기</button></div></div></section>'
+			}
+
+			$('.containerr').html(put);
+
+		},
+		error: function(xhr, status, error) {
+			console.log("에러발생!");
+			console.log(xhr, status, error);
+		}
+	})
+}
 	
 function selectEatList() {   
       $.ajax({
@@ -123,7 +160,7 @@ function selectEatList() {
               $('.p_fat').html(fat+'%');
               $('.p_sodium').html(sodium+'%');
               
-              
+              recommendList();
            },
            error: function (xhr, status, error) {
                  console.log("에러발생!");

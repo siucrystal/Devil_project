@@ -34,5 +34,9 @@ public interface FoodMapper {
    MemberDTO selectMember(String id);
 
    KDRIsDTO selectKdris(Map<String, Integer> map);
+
+   List<FoodDTO> getEnergy(double energy);
+   List<FoodDTO> getCarb(double carb);
+   List<FoodDTO> getProtein(double protein);
    
 }

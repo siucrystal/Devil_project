@@ -1,0 +1,239 @@
+@import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700,300);
+body {
+  font-family: "Yanone Kaffeesatz", sans-serif;
+}
+body a {
+  text-decoration: none;
+  color: white;
+}
+
+body .cont{
+
+}
+
+body .containerr {
+	overflow : hidden;
+overflow-x: auto;
+white-space: nowrap;
+height: 100%;
+display: flex;
+margin-left : 10px
+}
+body .containerr .card {
+  margin: auto;
+  display: inline-block;
+  margin-right: 30px;
+  transform: scale(0);
+  text-align: center;
+  position: relative;
+  transition: all 0.2s;
+  cursor: pointer;
+  opacity: 0.8;
+  box-shadow: 0px 17px 46px -10px #777777;
+  border-radius: 14px;
+  height: 90%
+}
+body .containerr .card {
+  -webkit-animation: intro 1s 0.1s forwards;
+          animation: intro 1s 0.1s forwards;
+}
+
+body .containerr .card {
+  background: -webkit-linear-gradient(45deg, #c96881 0%, #f7b695 100%);
+}
+
+body .containerr .card:hover .card_inner__cta button {
+  transform: scale(1);
+}
+
+body .containerr .card:hover {
+  opacity: 1;
+}
+
+body .containerr .card_inner__header {
+  height: 70px;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  overflow: hidden;
+}
+
+body .containerr .card_inner__content {
+  padding: 66px 20px;
+  width: 150px;
+}
+body .containerr .card_inner__content .name {
+	margin-top: 15px;
+  color: white;
+  font-weight: 500;
+  font-size: 15px;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.42);
+}
+body .containerr .card_inner__content .text {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 100;
+  margin-top: 20px;
+  font-size: 15px;
+  line-height: 16px;
+}
+body .containerr .card_inner__content .category {
+  font-weight: 800;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.64);
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+body .containerr .card_inner__cta {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 140px;
+}
+body .containerr .card_inner__cta button {
+  padding: 10px;
+  box-shadow: 0px 0px 40px 4px #F76583, 0px 0px 0px 2px rgba(255, 255, 255, 0.19) inset;
+  width: 100%;
+  background: -webkit-linear-gradient(-90deg, #fe5e7d 0%, #e5375b 100%);
+  border: none;
+  font-family: "Yanone Kaffeesatz", sans-serif;
+  color: white;
+  outline: none;
+  font-size: 18px;
+  border-radius: 6px;
+  transform: scale(0.94);
+  cursor: pointer;
+  transition: box-shadow 0.3s, transform 0.3s 0.1s;
+}
+body .containerr .card_inner__cta button span {
+  text-shadow: 0px 4px 18px #BA3F57;
+}
+body .containerr .card_inner__cta button:hover {
+  box-shadow: 0px 0px 60px 8px #F76583, 0px 0px 0px 2px rgba(255, 255, 255, 0.19) inset;
+}
+
+@-webkit-keyframes launch {
+  0% {
+    left: 1px;
+  }
+  25% {
+    top: -50px;
+    left: 1px;
+  }
+  50% {
+    left: -100px;
+  }
+  75% {
+    top: 100px;
+    transform: rotate(40deg);
+  }
+  100% {
+    left: 1px;
+  }
+}
+
+@keyframes launch {
+  0% {
+    left: 1px;
+  }
+  25% {
+    top: -50px;
+    left: 1px;
+  }
+  50% {
+    left: -100px;
+  }
+  75% {
+    top: 100px;
+    transform: rotate(40deg);
+  }
+  100% {
+    left: 1px;
+  }
+}
+@-webkit-keyframes fly {
+  0% {
+    left: 0px;
+  }
+  25% {
+    top: -50px;
+    left: 50px;
+  }
+  50% {
+    left: -130px;
+  }
+  75% {
+    top: 60px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+@keyframes fly {
+  0% {
+    left: 0px;
+  }
+  25% {
+    top: -50px;
+    left: 50px;
+  }
+  50% {
+    left: -130px;
+  }
+  75% {
+    top: 60px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+@-webkit-keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(720deg);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(720deg);
+  }
+}
+@-webkit-keyframes intro {
+  0% {
+    transform: scale(0);
+  }
+  25% {
+    transform: scale(1.06);
+  }
+  50% {
+    transform: scale(0.965);
+  }
+  75% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes intro {
+  0% {
+    transform: scale(0);
+  }
+  25% {
+    transform: scale(1.06);
+  }
+  50% {
+    transform: scale(0.965);
+  }
+  75% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

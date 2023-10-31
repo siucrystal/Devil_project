@@ -4,52 +4,55 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.daily.mapper.FoodMapper">
-   <!-- 리스트 -->
-   <select id="selectFoodList" parameterType="java.util.HashMap" resultType="foodDTO" >
+	<!-- 리스트 -->
+	<select id="selectFoodList" parameterType="java.util.HashMap"
+		resultType="foodDTO">
         <![CDATA[
         select * from food 
         where category like CONCAT('%',#{category},'%') 
         and name like CONCAT('%',#{name},'%') 
         limit #{start}, #{limit} ;       
         ]]>
-   </select>
-   
-   <select id="selectFoodListCnt" parameterType="foodDTO" resultType="Integer">
+	</select>
+
+	<select id="selectFoodListCnt" parameterType="foodDTO"
+		resultType="Integer">
         <![CDATA[
         select count(*) from food 
         where category like CONCAT('%',#{category},'%') 
         and name like CONCAT('%',#{name},'%') ;       
         ]]>
-   </select>
-   
-   <select id="selectCategoryList" resultType="foodDTO">
+	</select>
+
+	<select id="selectCategoryList" resultType="foodDTO">
         <![CDATA[
         select category from food group by category;       
         ]]>
-   </select>
-   
-   <!-- 음식 담기 -->
-   
-   <select id="selectFood" parameterType="int" resultType="foodDTO">
+	</select>
+
+	<!-- 음식 담기 -->
+
+	<select id="selectFood" parameterType="int" resultType="foodDTO">
         <![CDATA[
         select * from food where idx = #{idx};       
         ]]>
-   </select>
+	</select>
 
-   <select id="selectMyFoodList" parameterType="java.util.HashMap" resultType="myfoodDTO">
+	<select id="selectMyFoodList" parameterType="java.util.HashMap"
+		resultType="myfoodDTO">
         <![CDATA[
         select * from allfood where id = #{id} and date_format(date,'%y-%m-%d') = #{date} ;
         ]]>
-   </select>
+	</select>
 
-   <insert id="insertMyFood" parameterType="myfoodDTO" >
+	<insert id="insertMyFood" parameterType="myfoodDTO">
         <![CDATA[
         insert into allfood(id,name,amount,energy,carb,sugar,protein,fat,sodium,date)
         values(#{id},#{name},#{amount},#{energy},#{carb},#{sugar},#{protein},#{fat},#{sodium},#{date})
         ]]>
-   </insert>
-   
-   <update id="updateMyFood" parameterType="myfoodDTO">
+	</insert>
+
+	<update id="updateMyFood" parameterType="myfoodDTO">
       <![CDATA[
            update allfood 
               set amount=${amount}
@@ -61,30 +64,73 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                  ,sodium=${sodium} 
               where idx = #{idx} 
         ]]>
-   </update>
-   
-   <select id="selectMyFood" resultType="MyfoodDTO">
+	</update>
+
+	<select id="selectMyFood" resultType="MyfoodDTO">
         <![CDATA[
         select * from allfood where idx = #{idx};       
         ]]>
-   </select>
-   
-   <delete id="deleteMyFood" parameterType="myfoodDTO" >
+	</select>
+
+	<delete id="deleteMyFood" parameterType="myfoodDTO">
         <![CDATA[
         delete from allfood where idx = #{idx} 
         ]]>
-   </delete>
-   
-   <select id="selectMember" resultType="memberDTO">
+	</delete>
+
+	<select id="selectMember" resultType="memberDTO">
         <![CDATA[
         select * from member where id = #{id};       
         ]]>
-   </select>
+	</select>
 
-   <select id="selectKdris" parameterType="java.util.HashMap" resultType="kdrisDTO">
+	<select id="selectKdris" parameterType="java.util.HashMap"
+		resultType="kdrisDTO">
         <![CDATA[
         select * from Kdris where age = #{age} and sex = #{sex};       
         ]]>
-   </select>
-   
+	</select>
+
+	<select id="getEnergy" parameterType="Double"
+		resultType="foodDTO">
+        <![CDATA[
+        SELECT * FROM food WHERE (category, energy) 
+		IN (
+		    SELECT category, MAX(energy)
+		    FROM food
+		    WHERE energy <= #{energy} and category not in('빵류','음료 및 차류','장아찌 및 절임류','포류','과자류','아이스크림류','젓갈류')
+		    GROUP BY category
+		)
+		ORDER BY energy desc, sugar, fat, sodium;       
+        ]]>
+	</select>
+	
+	<select id="getCarb" parameterType="Double"
+		resultType="foodDTO">
+        <![CDATA[
+        SELECT * FROM food WHERE (category, carb) 
+		IN (
+		    SELECT category, MAX(carb)
+		    FROM food
+		    WHERE carb <= #{carb} and category not in('빵류','음료 및 차류','장아찌 및 절임류','포류','과자류','아이스크림류','젓갈류')
+		    GROUP BY category
+		)
+		ORDER BY carb desc, sugar, fat, sodium;       
+        ]]>
+	</select>
+	
+	<select id="getProtein" parameterType="Double"
+		resultType="foodDTO">
+        <![CDATA[
+        SELECT * FROM food WHERE (category, protein) 
+		IN (
+		    SELECT category, MAX(protein)
+		    FROM food
+		    WHERE protein <= #{protein} and category not in('빵류','음료 및 차류','장아찌 및 절임류','포류','과자류','아이스크림류','젓갈류')
+		    GROUP BY category
+		)
+		ORDER BY protein desc, sugar, fat, sodium;       
+        ]]>
+	</select>
+
 </mapper>

@@ -18,5 +18,6 @@ public interface FoodService {
    List<MyFoodDTO> updateMyFood(Map<String, Integer> map);   
    List<MyFoodDTO> deleteMyFood(Map<String, Integer> map);
    KDRIsDTO selectKdris(String id);
-   MyFoodDTO selectMyEat(String id);   
+   MyFoodDTO selectMyEat(String id);
+   List<FoodDTO> recommendFoodList(String id);   
 }
