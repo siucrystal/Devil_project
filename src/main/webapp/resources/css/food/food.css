@@ -1,112 +1,232 @@
 body {
-  font-family: Arial, sans-serif;
-  font-size: 15px;
-  background-color: #f5f5f5;
-  margin: 0;
-  padding: 0;
+	/* font-family: Arial, sans-serif;
+  font-size: 15px; */
+	/* background-color: #f5f5f5; */
+	margin: 0;
+	padding: 0;
+}
+.myfood_body {
+    height: 100%;
+    max-height: 240px;
+    overflow-y: auto;
+}
+.myfood_body::-webkit-scrollbar {
+	width: 3px;
+	background: #ddd;
+}
+
+/* "대부분 커스터마이징된" 스크롤바
+ * (width/height가 지정되지 않으면 보이지 않음 */
+.myfood_body::-webkit-scrollbar {
+	width: 3px;
+	height: 5px;
+	background-color: #ddd; /* 또는 트랙에 추가한다 */
+	border-radius: 10px;
+}
+
+/* 썸(thumb) 추가 */
+.myfood_body::-webkit-scrollbar-thumb {
+	background: #525FE1;
+	border-radius: 10px;
+}
+
+
+.food {
+	display: grid;
+	justify-content: space-between;
+	grid-template-columns: repeat(2, 1fr);
 }
 
 .food {
-  display: flex;
-  justify-content: space-between;
+	font-family: "ScoreDream";
+	font-size: 13px;
+}
+
+.foodlist {
+	border-right: 1px solid #ddd;
+	padding-right: 20px;
 }
 
 .foodlist, .myfood {
-  background-color: #fff;
-  padding: 20px;
-  margin: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+	background-color: #fff;
+	/* padding: 20px; */
+	margin: 10px;
+	/* border: 1px solid #ccc; */
+	border-radius: 5px;
 }
 
 .search {
-  margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 form {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
-select, input[type="text"], input[type="submit"] {
-  margin: 5px;
-  padding: 5px;
+#datepicker, #name {
+	padding: 5px;
+	/* 영선 - 추가한 css */
+	width: auto;
+	border-radius: 5px;
+	border: 2px solid #ddd;
+	background: #f9f9f9;
+}
+
+#category {
+	border: 1px solid #EAEAEA;
+	width: 90px;
+	font-family: 'SCoreDream';
+	font-weight: 500;
+	color: #333;
+	outline: none;
+	border-radius: 5px;
+	padding: 3px 10px;
+}
+
+#calendar-button, .cateBtn {
+	padding: 5px 10px;
+	background: #ddd;
+	border-radius: 5px;
+	color: #333;
+	font-size: 13px;
+}
+
+#category::-webkit-scrollbar {
+	display: none;
+}
+
+/* "대부분 커스터마이징된" 스크롤바
+ * (width/height가 지정되지 않으면 보이지 않음 */
+#category::-webkit-scrollbar {
+	width: 5px;
+	height: 8px;
+	background-color: #aaa; /* 또는 트랙에 추가한다 */
+}
+
+/* 썸(thumb) 추가 */
+#category::-webkit-scrollbar-thumb {
+	background: #000;
+}
+
+.myfood_body select, .myfood_body input[type="text"], .myfood_body input[type="submit"]
+	{
+	margin: 5px;
+	padding: 5px;
+	/* 영선 - 추가한 css */
+	width: 60px;
+	border-radius: 5px;
+	border: 2px solid #ddd;
+	background: #f9f9f9;
 }
 
 .menu_head {
-  font-weight: bold;
-  background-color: #333;
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
+	font-weight: 500;
+	background-color: #525fe1;
+	color: #fff;
+	align-items: center;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
 }
 
-.menu_head span {
+.food_head {
+	display: grid;
+	justify-content: space-between;
+	padding: 10px;
+	grid-template-columns: repeat(9, 1fr);
+}
+
+.myfood_head {
+	display: grid;
+	justify-content: space-between;
+	padding: 10px;
+	grid-template-columns: repeat(10, 1fr);
+}
+
+/* .menu_head span {
 	margin-left: 20px;
+} */
+.menu_flexStyle {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
 }
 
 .menu_body {
-  background-color: #f9f9f9;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+	/*   background-color: #f; */
+	padding: 10px;
+	border-bottom: 1px solid #ccc;
 }
 
-.menu_body span {
+.food_flexStyle {
+	display: grid;
+	justify-content: space-between;
+	align-items: center;
+	grid-template-columns: repeat(9, 1fr);
+}
+
+.myfood_flexStyle {
+	display: grid;
+	justify-content: space-between;
+	align-items: center;
+	grid-template-columns: repeat(10, 1fr);
+}
+
+/* .menu_body span {
 	margin-left: 20px;
-}
-
+} */
 button.keep {
-  background-color: #008CBA;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
+	background-color: #f0f0f0;
+	color: #333;
+	border: none;
+	padding: 5px 10px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-weight: 500;
 }
 
 .button {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
 }
 
-a {
-  margin: 0 5px;
-  text-decoration: none;
-  color: #008CBA;
+.button a {
+	margin: 0 5px;
+	text-decoration: none;
+	color: #525fe1;
+	font-family: 'SCoreDream';
+	font-weight: 600;
 }
 
-a:hover {
-  text-decoration: underline;
+.button a:hover {
+	text-decoration: underline;
 }
 
 /* DatePicker와 달력 버튼을 감싸는 컨테이너 */
 .datepicker-container {
-  display: flex;
+	display: flex;
+	justify-content: center;
 }
 
 /* DatePicker 스타일 */
 .datepicker-input {
-  border: 1px solid #ccc;
-  padding: 5px;
-  border-radius: 5px;
+	border: 1px solid #ccc;
+	padding: 5px;
+	border-radius: 5px;
 }
 
 /* 달력 버튼 스타일 */
 .calendar-button {
-  background-color: #008CBA;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  margin-left: 5px;
-  cursor: pointer;
-  border-radius: 5px;
+	background-color: #008CBA;
+	color: white;
+	border: none;
+	padding: 5px 10px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+	margin-left: 5px;
+	cursor: pointer;
+	border-radius: 5px;
 }

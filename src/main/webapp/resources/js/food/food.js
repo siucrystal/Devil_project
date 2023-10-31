@@ -20,10 +20,29 @@
 		selectMyFoodList();
 		
 		selectEatList();
+		
 	};
 	
+	var didScroll;
+	// 스크롤시에 사용자가 스크롤했다는 것을 알림 
+	$(window).scroll(function(event){
+	    didScroll = true;
+	});
+	
+	// hasScrolled()를 실행하고 didScroll 상태를 재설정
+	setInterval(function() {
+	    if (didScroll) {
+	        hasScrolled();
+	        didScroll = false;
+	    }
+	}, 250);
+	
+	function hasScrolled() {
+	  // 동작을 구현
+	}
+
+	
 function selectEatList() {   
-   console.log("눌러따!")
       $.ajax({
            url: "selectEatList",
            type: "POST",
@@ -38,20 +57,72 @@ function selectEatList() {
               
               var put = "";
               
-              put = '<div class="progress-bar"><div class="progress energy"></div></div><br>';
-              put += '<div class="progress-bar"><div class="progress carb"></div></div><br>'
-              put += '<div class="progress-bar"><div class="progress sugar"></div></div><br>'
-              put += '<div class="progress-bar"><div class="progress protein"></div></div><br>'
-              put += '<div class="progress-bar"><div class="progress fat"></div></div><br>'
-              put += '<div class="progress-bar"><div class="progress sodium"></div></div><br>'
+              put = '<span class="p_group"><span>칼로리</span><span class="progress_name p_energy"></span></span><div class="progress-bar"><div class="progress energy"></div></div><br>';
+              put += '<span class="p_group"><span>탄수화물</span><span class="progress_name p_carb"></span></span><div class="progress-bar"><div class="progress carb"></div></div><br>'
+              put += '<span class="p_group"><span>당분</span><span class="progress_name p_sugar"></span></span><div class="progress-bar"><div class="progress sugar"></div></div><br>'
+              put += '<span class="p_group"><span>단백질</span><span class="progress_name p_protein"></span></span><div class="progress-bar"><div class="progress protein"></div></div><br>'
+              put += '<span class="p_group"><span>지방</span><span class="progress_name p_fat"></span></span><div class="progress-bar"><div class="progress fat"></div></div><br>'
+              put += '<span class="p_group"><span>나트륨</span><span class="progress_name p_sodium"></span></span><div class="progress-bar"><div class="progress sodium"></div></div><br>'
               
+              // 함수 정의
+				function updateProgress(element, value) {
+				    if (value < 100) {
+				        element.css('width', value + '%');
+				        
+				        if (value < 30) {
+					        element.css('background', '#F3E99F');
+					    } else if (value >= 30 && value <= 50) {
+					        element.css('background', '#F7D060');
+					    }  else if (value > 50 && value <= 99) {
+					        element.css('background', '#98D8AA');
+					    } 
+				    } else {
+				        element.css('width', '100%');
+				        element.css('background', '#FF6D60');
+				        
+				    }
+				}
+				
+				// energy
+				setTimeout(function () {
+				    updateProgress($('.energy'), energy);
+				}, 1);
+				
+				// carb
+				setTimeout(function () {
+				    updateProgress($('.carb'), carb);
+				}, 1);
+				
+				// sugar
+				setTimeout(function () {
+				    updateProgress($('.sugar'), sugar);
+				}, 1);
+				
+				// protein
+				setTimeout(function () {
+				    updateProgress($('.protein'), protein);
+				}, 1);
+				
+				// fat
+				setTimeout(function () {
+				    updateProgress($('.fat'), fat);
+				}, 1);
+				
+				// sodium
+				setTimeout(function () {
+				    updateProgress($('.sodium'), sodium);
+				}, 1);
+				
               $('.graph').html(put);
-              $('.energy').css('width',energy+'%');
-              $('.carb').css('width',carb+'%');
-              $('.sugar').css('width',sugar+'%');
-              $('.protein').css('width',protein+'%');
-              $('.fat').css('width',fat+'%');
-              $('.sodium').css('width',sodium+'%');
+              
+              /* 영선 - food 몇퍼센트인지 입력 */
+           	  $('.p_energy').html(energy+'%');
+              $('.p_carb').html(carb+'%');
+              $('.p_sugar').html(sugar+'%');
+              $('.p_protein').html(protein+'%');
+              $('.p_fat').html(fat+'%');
+              $('.p_sodium').html(sodium+'%');
+              
               
            },
            error: function (xhr, status, error) {
@@ -60,6 +131,15 @@ function selectEatList() {
            }
        })
       
+   }
+   var progress = $('.progress').width();
+   if(progress > 100) {
+		  $('.energy').css('width','100%');
+          $('.carb').css('width','100%');
+          $('.sugar').css('width','100%');
+          $('.protein').css('width','100%');
+          $('.fat').css('width','100%');
+          $('.sodium').css('width','100%');
    }
 	
 	/*
@@ -98,7 +178,7 @@ function selectEatList() {
 	        	  const fat = list[i].fat
 	        	  const sodium = list[i].sodium
 	        	  const date = list[i].date
-	        	  put += '<div class="menu_body"><span>' + name + '</span><span>' + amount + '</span><span>' + energy + '</span><span>' + carb + '</span><span>' + sugar + '</span><span>' + protein + '</span><span>' + fat + '</span><span>' + sodium + '</span>'
+	        	  put += '<div class="menu_body food_flexStyle"><span>' + name + '</span><span>' + amount + '</span><span>' + energy + '</span><span>' + carb + '</span><span>' + sugar + '</span><span>' + protein + '</span><span>' + fat + '</span><span>' + sodium + '</span>'
 	              + '<span><button class="keep" onclick="insertBtn(' + idx + ');">담기</button></span></div>';
 	          }
 	          
@@ -110,7 +190,7 @@ function selectEatList() {
 	          if(paging.page<=1) {
 	          	html += '<span></span>';
 	          } else {
-	          	html += '<a href="#" onclick=selectFoodList(' + (paging.page-1) + ')>prev</a>';
+	          	html += '<a href="#" onclick=selectFoodList(' + (paging.page-1) + ')>이전</a>';
 	          }
 
 	          for(var i=paging.startPage; i<=paging.endPage; i++) {
@@ -125,7 +205,7 @@ function selectEatList() {
 	          if(paging.page >= paging.maxPage) {
 	          	html += '<span></span>';
 	          } else {
-	          	html += '<a href="#" onclick=selectFoodList(' + (paging.page+1) + ')>next</a>';
+	          	html += '<a href="#" onclick=selectFoodList(' + (paging.page+1) + ')>다음</a>';
 	          }
 
 	           $('.button').html(html);
@@ -166,9 +246,9 @@ function selectEatList() {
 					 const fat = list[i].fat
 					 const sodium = list[i].sodium
 					 const date = list[i].date
-					 put += '<div class="menu_body"><span>' + name + '</span><span><input type="text" id="amount' + idx + '" value="' + amount + '"></span><span>' + energy + '</span><span>' + carb + '</span><span>' + sugar + '</span><span>' + protein + '</span><span>' + fat + '</span><span>' + sodium + '</span>'
-					    + '<span><button class="keep" onclick="updatebtn(' + idx + ');">수정</button></span>'
-					    + '<span><button class="keep" onclick="deletebtn(' + idx + ');">삭제</button></span></div>';
+					 put += '<div class="menu_body myfood_flexStyle"><span>' + name + '</span><span><input type="text" id="amount' + idx + '" value="' + amount + '"></span><span>' + energy + '</span><span>' + carb + '</span><span>' + sugar + '</span><span>' + protein + '</span><span>' + fat + '</span><span>' + sodium + '</span>'
+					    + '<span><button class="keep keep1" onclick="updatebtn(' + idx + ');">수정</button></span>'
+					    + '<span><button class="keep keep1" onclick="deletebtn(' + idx + ');">삭제</button></span></div>';
 				}
 				
 				$('.myfood_body').html(put);
@@ -208,13 +288,14 @@ function selectEatList() {
 	        	  const protein = list[i].protein
 	        	  const fat = list[i].fat
 	        	  const sodium = list[i].sodium
-	        	  put += '<div class="menu_body"><span>' + name + '<span><input type="text" id="amount' + idx + '" value="' + amount + '"></span>' + energy + '</span><span>' + carb + '</span><span>' + sugar + '</span><span>' + protein + '</span><span>' + fat + '</span><span>' + sodium + '</span>'
-	        	  + '<span><button class="keep" onclick="updatebtn(' + idx + ');">수정</button></span>'
-	        	  + '<span><button class="keep" onclick="deletebtn(' + idx + ');">삭제</button></span></div>';
+	        	  put += '<div class="menu_body myfood_flexStyle"><span>' + name + '</span><span><input type="text" id="amount' + idx + '" value="' + amount + '"></span><span>' + energy + '</span><span>' + carb + '</span><span>' + sugar + '</span><span>' + protein + '</span><span>' + fat + '</span><span>' + sodium + '</span>'
+	        	  + '<span><button class="keep keep2" onclick="updatebtn(' + idx + ');">수정</button></span>'
+	        	  + '<span><button class="keep keep2" onclick="deletebtn(' + idx + ');">삭제</button></span></div>';
 	
 	          }
 	          
 	          $('.myfood_body').html(put)
+	          selectEatList();
 	        },
 	        error: function (xhr, status, error) {
 	           console.log("에러발생!");
@@ -249,11 +330,12 @@ function selectEatList() {
 	        	  const fat = list[i].fat
 	        	  const sodium = list[i].sodium
 	        	  const date = list[i].date
-	        	  put += '<div class="menu_body"><span>' + name + '</span><span><input type="text" id="amount' + idx + '" value="' + amount + '"></span><span>' + energy + '</span><span>' + carb + '</span><span>' + sugar + '</span><span>' + protein + '</span><span>' + fat + '</span><span>' + sodium + '</span>'
-	              + '<span><button class="keep" onclick="updatebtn(' + idx + ');">수정</button></span>'
-	              + '<span><button class="keep" onclick="deletebtn(' + idx + ');">삭제</button></span></div>';
+	        	  put += '<div class="menu_body myfood_flexStyle"><span>' + name + '</span><span><input type="text" id="amount' + idx + '" value="' + amount + '"></span><span>' + energy + '</span><span>' + carb + '</span><span>' + sugar + '</span><span>' + protein + '</span><span>' + fat + '</span><span>' + sodium + '</span>'
+	              + '<span><button class="keep keep3" onclick="updatebtn(' + idx + ');">수정</button></span>'
+	              + '<span><button class="keep keep3" onclick="deletebtn(' + idx + ');">삭제</button></span></div>';
 	          }
 	          $('.myfood_body').html(put);
+	          selectEatList();
 	        },
 	        error: function (xhr, status, error) {
 	           console.log("에러발생!");
@@ -289,11 +371,13 @@ function selectEatList() {
 	        	  const fat = list[i].fat
 	        	  const sodium = list[i].sodium
 	        	  const date = list[i].date
-	        	  put += '<div class="menu_body"><span>' + name + '</span><span><input type="text" id="amount' + idx + '" value="' + amount + '"></span><span>' + energy + '</span><span>' + carb + '</span><span>' + sugar + '</span><span>' + protein + '</span><span>' + fat + '</span><span>' + sodium + '</span>'
-	              + '<span><button class="keep" onclick="updatebtn(' + idx + ');">수정</button></span>'
-	              + '<span><button class="keep" onclick="deletebtn(' + idx + ');">삭제</button></span></div>';
+	        	  put += '<div class="menu_body myfood_flexStyle"><span>' + name + '</span><span><input type="text" id="amount' + idx + '" value="' + amount + '"></span><span>' + energy + '</span><span>' + carb + '</span><span>' + sugar + '</span><span>' + protein + '</span><span>' + fat + '</span><span>' + sodium + '</span>'
+	              + '<span><button class="keep keep4" onclick="updatebtn(' + idx + ');">수정</button></span>'
+	              + '<span><button class="keep keep4" onclick="deletebtn(' + idx + ');">삭제</button></span></div>';
 	          }
 	          $('.myfood_body').html(put);
+	          selectEatList();
+	          
 	        },
 	        error: function (xhr, status, error) {
 	           console.log("에러발생!");
