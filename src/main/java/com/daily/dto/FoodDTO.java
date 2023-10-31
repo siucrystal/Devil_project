@@ -8,14 +8,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FoodDTO extends PageDTO {
-	private int idx;
-	private String name;
-	private String category;
-	private int amount;
-	private double energy;
-	private double carb;
-	private double sugar;
-	private double protein;
-	private double fat;
-	private double sodium;
+   private int idx;
+   private String name;
+   private String category;
+   private int amount;
+   private double energy;
+   private double carb;
+   private double sugar;
+   private double protein;
+   private double fat;
+   private double sodium;
 }

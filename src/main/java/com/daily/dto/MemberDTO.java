@@ -4,8 +4,8 @@ public class MemberDTO {
 	private String id;
 	private String pw;
 	private String name;
-	private String sex;
-	private String age;
+	private int sex;
+	private int age;
 	
 	public MemberDTO() {
 		super();
@@ -19,7 +19,7 @@ public class MemberDTO {
 		this.name = name;
 	}
 	
-	public MemberDTO(String id, String pw, String name, String sex, String age) {
+	public MemberDTO(String id, String pw, String name, int sex, int age) {
 		super();
 		this.id = id;
 		this.pw = pw;
@@ -52,19 +52,19 @@ public class MemberDTO {
 		this.name = name;
 	}
 
-	public String getSex() {
+	public int getSex() {
 		return sex;
 	}
 
-	public void setSex(String sex) {
+	public void setSex(int sex) {
 		this.sex = sex;
 	}
 
-	public String getAge() {
+	public int getAge() {
 		return age;
 	}
 
-	public void setAge(String age) {
+	public void setAge(int age) {
 		this.age = age;
 	}
 
