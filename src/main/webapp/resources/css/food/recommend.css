@@ -1,6 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700,300);
 body {
-  font-family: "Yanone Kaffeesatz", sans-serif;
+  font-family: 'SCoreDream';
 }
 body a {
   text-decoration: none;
@@ -17,7 +16,8 @@ overflow-x: auto;
 white-space: nowrap;
 height: 100%;
 display: flex;
-margin-left : 10px
+margin-left : 10px;
+  padding: 10px 25px 25px 25px;
 }
 body .containerr .card {
   margin: auto;
@@ -29,17 +29,13 @@ body .containerr .card {
   transition: all 0.2s;
   cursor: pointer;
   opacity: 0.8;
-  box-shadow: 0px 17px 46px -10px #777777;
+  box-shadow: 0px 8px 16px rgba(32, 32, 32, 0.3);
   border-radius: 14px;
   height: 90%
 }
 body .containerr .card {
   -webkit-animation: intro 1s 0.1s forwards;
           animation: intro 1s 0.1s forwards;
-}
-
-body .containerr .card {
-  background: -webkit-linear-gradient(45deg, #c96881 0%, #f7b695 100%);
 }
 
 body .containerr .card:hover .card_inner__cta button {
@@ -62,15 +58,15 @@ body .containerr .card_inner__content {
   width: 150px;
 }
 body .containerr .card_inner__content .name {
-	margin-top: 15px;
-  color: white;
+  margin-top: 15px;
+  color: black;
   font-weight: 500;
   font-size: 15px;
-  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.42);
+  white-space: normal;
 }
 body .containerr .card_inner__content .text {
-  color: rgba(255, 255, 255, 0.6);
-  font-weight: 100;
+  color:#525FE1;
+  font-weight: 400;
   margin-top: 20px;
   font-size: 15px;
   line-height: 16px;
@@ -78,9 +74,9 @@ body .containerr .card_inner__content .text {
 body .containerr .card_inner__content .category {
   font-weight: 800;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.64);
+  color: black;
   font-size: 20px;
-  letter-spacing: 1px;
+  letter-spacing: -3px;
 }
 body .containerr .card_inner__cta {
   position: absolute;
@@ -92,12 +88,11 @@ body .containerr .card_inner__cta {
 }
 body .containerr .card_inner__cta button {
   padding: 10px;
-  box-shadow: 0px 0px 40px 4px #F76583, 0px 0px 0px 2px rgba(255, 255, 255, 0.19) inset;
-  width: 100%;
-  background: -webkit-linear-gradient(-90deg, #fe5e7d 0%, #e5375b 100%);
+  width: 80%;
+  background: #EAEAEA;
   border: none;
-  font-family: "Yanone Kaffeesatz", sans-serif;
-  color: white;
+  font-family: 'SCoreDream';
+  color: black;
   outline: none;
   font-size: 18px;
   border-radius: 6px;
@@ -106,10 +101,12 @@ body .containerr .card_inner__cta button {
   transition: box-shadow 0.3s, transform 0.3s 0.1s;
 }
 body .containerr .card_inner__cta button span {
-  text-shadow: 0px 4px 18px #BA3F57;
+  text-shadow: 0px 4px 18px #525FE1;
 }
 body .containerr .card_inner__cta button:hover {
-  box-shadow: 0px 0px 60px 8px #F76583, 0px 0px 0px 2px rgba(255, 255, 255, 0.19) inset;
+  background: #525FE1;
+  color:white;
+  box-shadow: 0px 0px 20px 8px #525FE1, 0px 0px 0px 2px rgba(255, 255, 255, 0.19) inset;
 }
 
 @-webkit-keyframes launch {
