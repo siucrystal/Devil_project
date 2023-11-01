@@ -3,12 +3,9 @@ $(function(){
      $('#hwBtn').click(function(){
 	    var height = Number($('#height2').val());
 	    var weight = Number($('#weight2').val());
-        console.log("height : " + height);
-        console.log("weight : " + weight);
         
 		if(height != 0 && weight != 0) {
 	        var wCount = (height + weight) / 100;
-	        console.log("wCount : " + wCount);
 	        $('.waterHidden').val(wCount);
 	        $('#height').val(height);
 	        $('#weight').val(weight);
@@ -20,13 +17,18 @@ $(function(){
 		} else {
 			$('.hwBefore').css({display: 'inline-block'});
 			$('.hwAfter').css({display: 'none'});
-			alert("키와 몸무게를 입력하세요!");
+			swal({
+				title: '<span class=\"custom_text\">Error!</span>',
+				html: '<span class=\"custom_text\">키와 몸무게를 입력해주세요!</span>',
+				type: 'error',
+				confirmButtonColor: '#3085d6',
+				confirmButtonText: '확인',
+			});
 		}
     })
 	$("#water").on("keyup", function() {
       	$(this).val($(this).val().replace(/[^0-9]/g,""));
    	});
-		/*$(".waterAter").css({display: 'none'});*/
 	
 	
 	
