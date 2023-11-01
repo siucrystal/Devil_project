@@ -13,7 +13,7 @@
 </head>
 <body>
    <header>
-      <img class="logo" src="" alt="logo">
+      <img class="logo" src="<%=request.getContextPath() %>/resources/imgs/logo.png" alt="logo">
       <nav>
          <ul class="nav_links">
             <li><a href="<%=request.getContextPath()%>/mypage/main">My page</a></li>
