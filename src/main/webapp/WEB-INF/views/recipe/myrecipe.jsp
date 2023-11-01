@@ -11,13 +11,13 @@
 	href="<%=request.getContextPath()%>/resources/css/recipe/recipegraph.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
 	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
 	crossorigin="anonymous"></script>
 <script
 	src="<%=request.getContextPath()%>/resources/js/recipe/recipe.js"></script>
 
-
+	  
 <%@include file="../layout/header.jsp"%>
 <title>Daily Balance</title>
 
@@ -84,16 +84,29 @@
 					value="검색">
 			</form>
 			<div class="recipe_search_info">
-				<c:forEach var="item" items="${ingredient_list}">
-					<div>
-						<span>${item.idx }</span> <span>${item.name}</span> <span>${item.category}</span>
-						<span>${item.amount}</span> <span>${item.energy}</span> <span>${item.carb}</span>
-						<span>${item.sugar}</span> <span>${item.protein}</span> <span>${item.fat}</span>
-						<span>${item.sodium}</span> <span><Button class="keep"
-								onclick="keepbtn(${item.idx});">담기</Button></span>
-					</div>
-					<hr>
-				</c:forEach>
+				<div class="food_head menu_head" >
+					<span>no</span>
+					<span>재료명</span>
+					<span>카테고리</span>
+			        <span class="menu_flexStyle">분량<span>(g)</span></span>
+			        <span class="menu_flexStyle">열량<span>(kcal)</span></span>
+			        <span class="menu_flexStyle">탄수화물<span>(g)</span></span>
+			        <span class="menu_flexStyle">당류<span>(g)</span></span>
+			        <span class="menu_flexStyle">단백질<span>(g)</span></span>
+			        <span class="menu_flexStyle">지방<span>(g)</span></span>
+			        <span class="menu_flexStyle">나트륨<span>(mg)</span></span>				
+			        <span class="menu_flexStyle"><span></span></span>				
+				</div>
+					<c:forEach var="item" items="${ingredient_list}">
+						<div>
+							<span>${item.idx }</span> <span>${item.name}</span> <span>${item.category}</span>
+							<span>${item.amount}</span> <span>${item.energy}</span> <span>${item.carb}</span>
+							<span>${item.sugar}</span> <span>${item.protein}</span> <span>${item.fat}</span>
+							<span>${item.sodium}</span> <span><Button class="keep"
+									onclick="keepbtn(${item.idx});">담기</Button></span>
+						</div>
+						<hr>
+					</c:forEach>
 			</div>
 
 			<!-- 페이징 버튼 -->
@@ -121,9 +134,6 @@
 			<div class="keep_data"></div>
 		</div>
 	</div>
-	<footer class="flex_footer">
-		&copy; 2023 Daily Balance<br>
-	</footer>
 	<%
 	String pageNum = request.getParameter("pageNum");
 	if (pageNum == null) {
