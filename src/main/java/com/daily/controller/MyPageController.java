@@ -2,6 +2,7 @@ package com.daily.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +19,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.daily.dto.FoodDTO;
 import com.daily.dto.WaterDTO;
+import com.daily.service.FoodService;
 import com.daily.service.WaterService;
 
 @Controller
@@ -30,6 +33,10 @@ public class MyPageController {
 	@Qualifier("waterServiceImpl") 
 	WaterService water2;
 
+	@Autowired
+	@Qualifier("foodServiceImpl")
+	FoodService service;
+	
 	@RequestMapping("main")
 	public String main() {
 		return "mypage/main";
@@ -37,7 +44,6 @@ public class MyPageController {
 	
 	@GetMapping("water")
 	public ModelAndView water(WaterDTO dto, RedirectAttributes ra, HttpSession session) {
-		System.out.println("여기 들어옴?");
 		System.out.println("water DTO " + dto.toString());
 		ModelAndView mav = new ModelAndView();
 		String id = (String)session.getAttribute("id");
@@ -47,11 +53,12 @@ public class MyPageController {
 			dto = water2.getWaterOne(dto.getId()); 
 			
 		} else {
-			System.out.println("rs : " + rs);
 			rs = water2.getWaterAccure(dto);	
 			dto = water2.getWaterOne(dto.getId());
-			System.out.println("/////////////////////////////////////////////////////////");
 		}
+		
+		List<FoodDTO> category = service.selectCategoryList();
+		System.out.println("dfdssdfsdsfsddf"+category);
 		
 		mav.setViewName("mypage/main");
 		mav.addObject("id",dto.getId());
@@ -59,23 +66,24 @@ public class MyPageController {
 		mav.addObject("height", dto.getHeight());
 		mav.addObject("weight", dto.getWeight());
 		mav.addObject("waterguide", dto.getWaterguide());
-
+		mav.addObject("category",category);
 		return mav; 
 	}
 	
 	@GetMapping("waterIdSubmit")
 	@ResponseBody
 	public Map<String, Object> waterIdSubmit(HttpSession session) {
+		
+		List<FoodDTO> category = service.selectCategoryList();
+		
 	    String id = (String) session.getAttribute("id");
 	    int rs = water2.getOne(id);
 	    
 	    Map<String, Object> response = new HashMap();
-	    System.out.println("rs : "+ rs);
 
 	    if (rs == 1) {
 	        // 만약 rs가 0인 경우
 	        WaterDTO dto = water2.getWaterOne(id);
-	        System.out.println("dto 하.. : "+ dto);
 	        response.put("dto", dto);
 	    }else if (rs == 0) {
 	    	response.put("rs", rs);
