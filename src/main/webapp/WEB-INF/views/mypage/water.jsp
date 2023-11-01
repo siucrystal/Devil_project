@@ -331,7 +331,7 @@ $(function(){
 						<input type="hidden" id="id" name="id"value="<%=id%>">
 					</div>
 					<input type="submit" value="입력" id="waterBtn">
-					<input type="button" value="키 몸무게 다시입력" id="returnHW" style="opacity:0;">
+					<input type="button" value="키 몸무게 다시입력" id="returnHW">
 				</div>
 			</div>
 			<div id="waterAter" class="font">
