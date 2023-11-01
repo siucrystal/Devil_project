@@ -27,68 +27,66 @@ import com.daily.service.WaterService;
 @Controller
 @RequestMapping("mypage")
 public class MyPageController {
-	String view;
-	
-	@Autowired
-	@Qualifier("waterServiceImpl") 
-	WaterService water2;
+   String view;
+   
+   @Autowired
+   @Qualifier("waterServiceImpl") 
+   WaterService water2;
 
-	@Autowired
-	@Qualifier("foodServiceImpl")
-	FoodService service;
-	
-	@RequestMapping("main")
-	public String main() {
-		return "mypage/main";
-	}
-	
-	@GetMapping("water")
-	public ModelAndView water(WaterDTO dto, RedirectAttributes ra, HttpSession session) {
-		System.out.println("water DTO " + dto.toString());
-		ModelAndView mav = new ModelAndView();
-		String id = (String)session.getAttribute("id");
-		int rs = water2.getOne(id);
-		if(rs == 1) {
-			rs = water2.WaterUpdate(dto);	
-			dto = water2.getWaterOne(dto.getId()); 
-			
-		} else {
-			rs = water2.getWaterAccure(dto);	
-			dto = water2.getWaterOne(dto.getId());
-		}
-		
-		List<FoodDTO> category = service.selectCategoryList();
-		System.out.println("dfdssdfsdsfsddf"+category);
-		
-		mav.setViewName("mypage/main");
-		mav.addObject("id",dto.getId());
-		mav.addObject("water",dto.getWater());
-		mav.addObject("height", dto.getHeight());
-		mav.addObject("weight", dto.getWeight());
-		mav.addObject("waterguide", dto.getWaterguide());
-		mav.addObject("category",category);
-		return mav; 
-	}
-	
-	@GetMapping("waterIdSubmit")
-	@ResponseBody
-	public Map<String, Object> waterIdSubmit(HttpSession session) {
-		
-		List<FoodDTO> category = service.selectCategoryList();
-		
-	    String id = (String) session.getAttribute("id");
-	    int rs = water2.getOne(id);
-	    
-	    Map<String, Object> response = new HashMap();
+   @Autowired
+   @Qualifier("foodServiceImpl")
+   FoodService service;
+   
+   @RequestMapping("main")
+   public String main() {
+      return "mypage/main";
+   }
+   
+   @GetMapping("water")
+   public ModelAndView water(WaterDTO dto, RedirectAttributes ra, HttpSession session) {
+      ModelAndView mav = new ModelAndView();
+      String id = (String)session.getAttribute("id");
+      int rs = water2.getOne(id);
+      if(rs == 1) {
+         rs = water2.WaterUpdate(dto);   
+         dto = water2.getWaterOne(dto.getId()); 
+         
+      } else {
+         rs = water2.getWaterAccure(dto);   
+         dto = water2.getWaterOne(dto.getId());
+      }
+      
+      List<FoodDTO> category = service.selectCategoryList();
+      
+      mav.setViewName("mypage/main");
+      mav.addObject("id",dto.getId());
+      mav.addObject("water",dto.getWater());
+      mav.addObject("height", dto.getHeight());
+      mav.addObject("weight", dto.getWeight());
+      mav.addObject("waterguide", dto.getWaterguide());
+      mav.addObject("category",category);
+      return mav; 
+   }
+   
+   @GetMapping("waterIdSubmit")
+   @ResponseBody
+   public Map<String, Object> waterIdSubmit(HttpSession session) {
+      
+      List<FoodDTO> category = service.selectCategoryList();
+      
+       String id = (String) session.getAttribute("id");
+       int rs = water2.getOne(id);
+       
+       Map<String, Object> response = new HashMap();
 
-	    if (rs == 1) {
-	        // 만약 rs가 0인 경우
-	        WaterDTO dto = water2.getWaterOne(id);
-	        response.put("dto", dto);
-	    }else if (rs == 0) {
-	    	response.put("rs", rs);
-	    }
+       if (rs == 1) {
+           // 만약 rs가 0인 경우
+           WaterDTO dto = water2.getWaterOne(id);
+           response.put("dto", dto);
+       }else if (rs == 0) {
+          response.put("rs", rs);
+       }
 
-	    return response;
-	}
+       return response;
+   }
 }

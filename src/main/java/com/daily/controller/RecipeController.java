@@ -215,7 +215,6 @@ public class RecipeController {
 		map.put("recipe_name", name);
 		service.deleteRecipeStoreIngredient(id);
 		ArrayList<RecipeDTO> userRecipeIngredient = service.getUserRecipeIngredient(map);
-		System.out.println(userRecipeIngredient.toString());
 		for(RecipeDTO dto : userRecipeIngredient) {
 			service.insertIngredient(dto);
 		}
