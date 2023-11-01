@@ -23,13 +23,13 @@ function keepitin(idx) {
 			keepview();
 		},
 		error: function(xhr, status, error) {
-            swal({
-                title : '<span class=\"custom_text\">error!</span>',
-                html : '<span class=\"custom_text\">이미 담겨있는 <b style="color:red;">항목</b> 입니다!</span>',
-                type : 'error',
-                confirmButtonColor: '#3085d6',
-                confirmButtonText: '확인',
-            });
+			swal({
+				title: '<span class=\"custom_text\">error!</span>',
+				html: '<span class=\"custom_text\">이미 담겨있는 <b style="color:red;">항목</b> 입니다!</span>',
+				type: 'error',
+				confirmButtonColor: '#3085d6',
+				confirmButtonText: '확인',
+			});
 			console.log(xhr, status, error);
 		}
 	})
@@ -154,35 +154,35 @@ function selectIngredeintList() {
 			let sodium_color = "";
 
 			let nutritionArray = [total_energy, total_carb, total_sugar, total_protein, total_fat, total_sodium];
-			let colorArray = [energy_color,carb_color,sugar_color,protein_color,fat_color,sodium_color];
-            for(let i = 0; i < nutritionArray.length; i++) {
-			if ((nutritionArray[i] < threshold_yellow)) {
-				colorArray[i] = "F3E99F";
-			} else if ((nutritionArray[i] > threshold_yellow) && (nutritionArray[i] <= threshold_orange)) {
-				colorArray[i] = "F7D060";
-			} else if ((nutritionArray[i] > threshold_orange) && (nutritionArray[i] <= threshold_green)) {
-				colorArray[i] = "98D8AA";
-			} else if ((nutritionArray[i] >= threshold_green)) {
-				colorArray[i] = "FF6D60";
+			let colorArray = [energy_color, carb_color, sugar_color, protein_color, fat_color, sodium_color];
+			for (let i = 0; i < nutritionArray.length; i++) {
+				if ((nutritionArray[i] < threshold_yellow)) {
+					colorArray[i] = "F3E99F";
+				} else if ((nutritionArray[i] > threshold_yellow) && (nutritionArray[i] <= threshold_orange)) {
+					colorArray[i] = "F7D060";
+				} else if ((nutritionArray[i] > threshold_orange) && (nutritionArray[i] <= threshold_green)) {
+					colorArray[i] = "98D8AA";
+				} else if ((nutritionArray[i] >= threshold_green)) {
+					colorArray[i] = "FF6D60";
+				}
 			}
-        }
 			$('.energy').css('height', total_energy + '%');
 			$('.energy').css('background-color', "#" + colorArray[0]);
 
 			$('.carb').css('height', total_carb + '%');
-            $('.carb').css('background-color', "#" + colorArray[1]);
+			$('.carb').css('background-color', "#" + colorArray[1]);
 
 			$('.sugar').css('height', total_sugar + '%');
-            $('.sugar').css('background-color', "#" + colorArray[2]);
+			$('.sugar').css('background-color', "#" + colorArray[2]);
 
 			$('.protein').css('height', total_protein + '%');
-            $('.protein').css('background-color', "#" + colorArray[3]);
+			$('.protein').css('background-color', "#" + colorArray[3]);
 
 			$('.fat').css('height', total_fat + '%');
-            $('.fat').css('background-color', "#" + colorArray[4]);
+			$('.fat').css('background-color', "#" + colorArray[4]);
 
 			$('.sodium').css('height', total_sodium + '%');
-            $('.sodium').css('background-color', "#" + colorArray[5]);
+			$('.sodium').css('background-color', "#" + colorArray[5]);
 		},
 		error: function(xhr, status, error) {
 			console.log(xhr, status, error);
@@ -298,33 +298,33 @@ window.onload = function() {
 	document.querySelector('.recipe_store').addEventListener('click', function() {
 		var recipe_name = $('.user_recipe_name').val();
 		if (recipe_name == "") {
-                swal({
-                    title : '<span class=\"custom_text\">Error!</span>',
-                    html : '<span class=\"custom_text\">저장할 <b style="color:red;">레시피의</b> 이름을 입력해주세요!</span>',
-                    type : 'error',
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: '확인',
-                });
+			swal({
+				title: '<span class=\"custom_text\">Error!</span>',
+				html: '<span class=\"custom_text\">저장할 <b style="color:red;">레시피의</b> 이름을 입력해주세요!</span>',
+				type: 'error',
+				confirmButtonColor: '#3085d6',
+				confirmButtonText: '확인',
+			});
 		} else {
 			recipe_store(recipe_name);
 		}
 	});
 	document.querySelector('.new_recipe').addEventListener('click', function() {
-        swal({
-            title : '<span class=\"custom_text\">Error!</span>',
-            html : '<span class=\"custom_text\">저장하지 않은 재료들이 <b style="color:red;">초기화</b>됩니다. 괜찮으신가요? </span>',
-            type : 'error',
-            showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
-            confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
-            cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
-            confirmButtonText: '네', // confirm 버튼 텍스트 지정
-            cancelButtonText: '아니오', // cancel 버튼 텍스트 지정
-        }).then(result => {
-            if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
-                $('.user_recipe_nmae').val("");
-			    newRecipe();    
-            }
-         });
+		swal({
+			title: '<span class=\"custom_text\">Error!</span>',
+			html: '<span class=\"custom_text\">저장하지 않은 재료들이 <b style="color:red;">초기화</b>됩니다. 괜찮으신가요? </span>',
+			type: 'error',
+			showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
+			confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+			cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+			confirmButtonText: '네', // confirm 버튼 텍스트 지정
+			cancelButtonText: '아니오', // cancel 버튼 텍스트 지정
+		}).then((isConfirm) => {
+			if (isConfirm) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+				$('.user_recipe_nmae').val("");
+				newRecipe();
+			}
+		});
 	})
 
 }
