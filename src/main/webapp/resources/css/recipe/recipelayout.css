@@ -22,7 +22,7 @@ body {
 	background-color: white;
 	border-radius: 20px;
 	box-shadow: 0px 8px 16px rgba(32, 32, 32, 0.08);
-	height:auto;
+	height: auto;
 }
 
 .myrecipe_list {
@@ -49,18 +49,19 @@ body {
 	flex-wrap: nowrap;
 	align-items: center;
 	font-size: 14px;
-	gap:18px;
+	gap: 18px;
 	margin: 5px 0;
 }
 
 .recipe-list-values span {
 	margin: 0;
 }
+
 .recip-info {
-	display:flex;
+	display: flex;
 	flex-direction: column;
 	gap: 3px;
-	text-align:center;
+	text-align: center;
 }
 
 .recipe-buttons {
@@ -86,7 +87,7 @@ body {
 
 .recipe-list-items button.recipe-update-button:hover {
 	background-color: #525FE1;
-	color:white;
+	color: white;
 }
 
 .recipe-list-items button.recipe-delete-button {
@@ -105,7 +106,7 @@ body {
 
 .recipe-list-items button.recipe-delete-button:hover {
 	background-color: #525FE1;
-	color:white;
+	color: white;
 }
 
 .recipe_kdris_list {
@@ -166,7 +167,7 @@ body {
 	width: 400px;
 	text-align: center;
 	border-radius: 10px;
-	background:#f9f9f9;
+	background: #f9f9f9;
 	border: 3px solid #ddd;
 }
 
@@ -175,7 +176,7 @@ body {
 	font-weight: 500;
 	height: 45px;
 	width: 140px;
-	margin-left:10px;
+	margin-left: 10px;
 	border-radius: 10px;
 	background: #EAEAEA;
 	border: none;
@@ -225,8 +226,9 @@ body {
 
 .ingredient_search:hover {
 	background-color: #525FE1;
-	color:white; 
+	color: white;
 }
+
 .recipe_search_info {
 	margin-top: 20px;
 }
@@ -255,7 +257,7 @@ body {
 
 .pagingview a:hover {
 	background-color: #525FE1;
-	color:white;
+	color: white;
 }
 
 .keep_ingredient {
@@ -270,7 +272,8 @@ body {
 }
 
 .recipe_search_info {
-	background-color: white; display : flex;
+	background-color: white;
+	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
 	border: 1px solid #ddd;
@@ -315,13 +318,13 @@ body {
 
 .recipe_search_info .keep:hover {
 	background-color: #525FE1;
-	color:white;
+	color: white;
 }
 
 .recipe_search_info div span:nth-child(2) {
 	flex: 2; /* 예: name 부분의 너비를 두 배로 늘립니다 */
 	padding: 5px;
-	font-size:14px;
+	font-size: 14px;
 }
 
 /* 장바구니 영역 css */
@@ -341,12 +344,12 @@ body {
 }
 
 .nutrition-info, .nutrition-values {
-    display: flex;
-    font-size: 14px;
-    gap: 25px;
-    align-items: center;
-    margin-bottom: 10px;
-    margin-top: 5px;
+	display: flex;
+	font-size: 14px;
+	gap: 25px;
+	align-items: center;
+	margin-bottom: 10px;
+	margin-top: 5px;
 }
 
 #input-gram {
@@ -378,8 +381,8 @@ body {
 }
 
 .save-button:hover {
-	background-color:#525FE1;
-	color:white;
+	background-color: #525FE1;
+	color: white;
 }
 
 .delete-button {
@@ -392,5 +395,17 @@ body {
 }
 
 .button-container {
-    margin-bottom: 10px;
+	margin-bottom: 10px;
+}
+
+.flex_footer {
+	font-family: 'SCoreDream';
+	font-weight: 500;
+	color: white;
+	font-size: 0.8rem;
+	text-align: center; /* 텍스트 가운데 정렬 */
+	background-color: #333;
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+	margin-top: 50px;
 }

@@ -7,6 +7,7 @@
 <html>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/main.css"> 
+
 <head>
 <meta charset="UTF-8">
 <title>Daily Balance</title>
@@ -28,7 +29,7 @@
       </div>
     </main>
     <footer class="flex_footer">
-      Footer
+       &copy; 2023 Daily Balance
     </footer>
    </div>
 </body>

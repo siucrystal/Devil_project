@@ -11,13 +11,13 @@
 	href="<%=request.getContextPath()%>/resources/css/recipe/recipegraph.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
 	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
 	crossorigin="anonymous"></script>
 <script
 	src="<%=request.getContextPath()%>/resources/js/recipe/recipe.js"></script>
 
-	  
+
 <%@include file="../layout/header.jsp"%>
 <title>Daily Balance</title>
 
@@ -121,6 +121,9 @@
 			<div class="keep_data"></div>
 		</div>
 	</div>
+	<footer class="flex_footer">
+		&copy; 2023 Daily Balance<br>
+	</footer>
 	<%
 	String pageNum = request.getParameter("pageNum");
 	if (pageNum == null) {

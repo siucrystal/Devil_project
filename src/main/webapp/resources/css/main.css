@@ -75,8 +75,12 @@ body {
 }
 
 .flex_footer {
-   background-color: #525FE1;
+	font-family: 'SCoreDream';
+	font-weight:500;
+	color:white;
+	font-size: 0.8rem;
+   background-color: #333;
    padding-top: 3rem;
    padding-bottom: 3rem;
    margin-top: 50px;
-}
+ }
