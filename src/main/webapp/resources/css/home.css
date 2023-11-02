@@ -1,0 +1,313 @@
+@font-face {
+	font-family: 'S-CoreDream-3Light';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+}
+
+.container {
+	font-family: 'S-CoreDream-3Light';
+	background-color: #F5F7F8;
+}
+
+.background {
+	position: absolute;
+	width: 100%;
+	height: auto;
+	z-index: 0;
+}
+
+.circle {
+	width: 600px; /* 원의 너비 */
+	height: 600px; /* 원의 높이 */
+	background-color: white; /* 배경색을 투명으로 설정 */
+	border-radius: 50%; /* 원을 만들기 위해 50%의 border-radius 설정 */
+	position: absolute; /* 절대 위치로 설정 */
+	top: 50%; /* 상단 위치를 화면 높이의 중앙으로 설정 */
+	left: 50%; /* 왼쪽 위치를 화면 너비의 중앙으로 설정 */
+	transform: translate(-50%, -50%); /* 원을 중앙으로 이동 */
+	box-shadow: 0px 8px 16px rgba(32, 32, 32, 0.2);
+	z-index: 1;
+}
+
+.logo {
+	width: 150px;
+	padding: 10px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.dailybalance {
+	width: 850px;
+	position: absolute;
+	top: 245px;
+	left: 80px;
+	z-index: 10;
+}
+
+.info_text {
+	font-family: 'S-CoreDream-3Light';
+	font-weight: 900;
+	position: absolute;
+	width: 550px;
+	top: 65%;
+	left: 9%;
+	z-index: 10;
+	font-size: 1.1rem;
+}
+
+.imgview1 {
+	width: 520px;
+	position: absolute; /* 절대 위치로 설정 */
+	top: 50%; /* 상단 위치를 화면 높이의 중앙으로 설정 */
+	left: 50.2%; /* 왼쪽 위치를 화면 너비의 중앙으로 설정 */
+	transform: translate(-50%, -50%); /* 원을 중앙으로 이동 */
+	z-index: 5;
+	transition: top 1s;
+}
+
+.imgview2 {
+	width: 520px;
+	position: absolute; /* 절대 위치로 설정 */
+	top: -30%; /* 상단 위치를 화면 높이의 중앙으로 설정 */
+	left: 50.2%; /* 왼쪽 위치를 화면 너비의 중앙으로 설정 */
+	transform: translate(-50%, -50%); /* 원을 중앙으로 이동 */
+	z-index: 5;
+	transition: top 1s;
+}
+
+.imgview3 {
+	width: 520px;
+	position: absolute; /* 절대 위치로 설정 */
+	top: -30%; /* 상단 위치를 화면 높이의 중앙으로 설정 */
+	left: 50.2%; /* 왼쪽 위치를 화면 너비의 중앙으로 설정 */
+	transform: translate(-50%, -50%); /* 원을 중앙으로 이동 */
+	z-index: 5;
+	transition: top 1s;
+}
+
+.hidden {
+	display: none;
+}
+/* 첫번째 사이드 바*/
+.sidebar1 {
+	position: absolute;
+	top: 25%;
+	right: 20%;
+	transform: translate(-50%, -50%); /* 원을 중앙으로 이동 */
+	transition: right 1s;
+}
+
+.sidemenu1 {
+	width: 125px; /* 원의 너비 */
+	height: 125px; /* 원의 높이 */
+	background-color: white; /* 배경색을 투명으로 설정 */
+	border-radius: 50%; /* 원을 만들기 위해 50%의 border-radius 설정 */
+	position: absolute; /* 절대 위치로 설정 */
+	transition: width 1s, height 1s;
+	z-index: 1;
+}
+
+.sidemenu1::before {
+	content: "";
+	width: 100px; /* 내부 원의 너비 */
+	height: 100px; /* 내부 원의 높이 */
+	background-color: #EAEAEA; /* 내부 원의 배경색 */
+	border-radius: 50%; /* 내부 원을 만들기 위해 50%의 border-radius 설정 */
+	position: absolute;
+	top: 12.5px; /* 조절하여 내부 원을 가운데 위치시킴 */
+	left: 12.5px; /* 조절하여 내부 원을 가운데 위치시킴 */
+	transition: width 1s, height 1s;
+	z-index: 2;
+}
+
+.sidemenu1 img {
+	width: 100px;
+	position: absolute;
+	z-index: 3;
+	top: 8%;
+	left: 10%;
+	transition: width 1s, height 1s;
+}
+
+.sidemenu1_side {
+	width: 500px;
+	height: 125px;
+	background-color: white;
+	display: flex;
+	justify-content: center; /* 가로 중앙 정렬 */
+	align-items: center; /* 세로 중앙 정렬 */
+	position: absolute;
+	font-size: 0.6rem;
+	font-weight: 500;
+	left: 62.5px;
+	z-index: 0;
+	transition: width 1s, height 1s;
+}
+
+.sidemenu1_side span {
+	width: 300px;
+	margin-right: 5%;
+}
+
+/* 두번째 사이드 바*/
+.sidebar2 {
+	position: absolute;
+	top: 40%;
+	right: 20%;
+	transform: translate(-50%, -50%); /* 원을 중앙으로 이동 */
+	transition: right 1s, top 1s;
+}
+
+.sidemenu2 {
+	width: 125px; /* 원의 너비 */
+	height: 125px; /* 원의 높이 */
+	background-color: white; /* 배경색을 투명으로 설정 */
+	border-radius: 50%; /* 원을 만들기 위해 50%의 border-radius 설정 */
+	position: absolute; /* 절대 위치로 설정 */
+	transition: width 1s, height 1s;
+	z-index: 1;
+}
+
+.sidemenu2::before {
+	content: "";
+	width: 100px; /* 내부 원의 너비 */
+	height: 100px; /* 내부 원의 높이 */
+	background-color: #EAEAEA; /* 내부 원의 배경색 */
+	border-radius: 50%; /* 내부 원을 만들기 위해 50%의 border-radius 설정 */
+	position: absolute;
+	top: 12.5px; /* 조절하여 내부 원을 가운데 위치시킴 */
+	left: 12.5px; /* 조절하여 내부 원을 가운데 위치시킴 */
+	transition: width 1s, height 1s;
+	z-index: 2;
+}
+
+.sidemenu2 img {
+	width: 100px;
+	position: absolute;
+	z-index: 3;
+	top: 9%;
+	left: 8%;
+	transition: width 1s, height 1s;
+}
+
+.sidemenu2_side {
+	width: 500px;
+	height: 125px;
+	display: flex;
+	justify-content: center; /* 가로 중앙 정렬 */
+	align-items: center; /* 세로 중앙 정렬 */
+	background-color: white;
+	position: absolute;
+	font-size: 0.6rem;
+	left: 62.5px;
+	z-index: 0;
+	transition: width 1s, height 1s;
+}
+
+.sidemenu2_side span {
+	width: 300px;
+	margin-right: 5%;
+}
+
+/* 세번째 사이드 바*/
+.sidebar3 {
+	position: absolute;
+	top: 55%;
+	right: 20%;
+	transform: translate(-50%, -50%); /* 원을 중앙으로 이동 */
+	transition: right 1s, top 1s;
+}
+
+.sidemenu3 {
+	width: 125px; /* 원의 너비 */
+	height: 125px; /* 원의 높이 */
+	background-color: white; /* 배경색을 투명으로 설정 */
+	border-radius: 50%; /* 원을 만들기 위해 50%의 border-radius 설정 */
+	position: absolute; /* 절대 위치로 설정 */
+	transition: width 1s, height 1s;
+	z-index: 1;
+}
+
+.sidemenu3::before {
+	content: "";
+	width: 100px; /* 내부 원의 너비 */
+	height: 100px; /* 내부 원의 높이 */
+	background-color: #EAEAEA; /* 내부 원의 배경색 */
+	border-radius: 50%; /* 내부 원을 만들기 위해 50%의 border-radius 설정 */
+	position: absolute;
+	top: 12.5px; /* 조절하여 내부 원을 가운데 위치시킴 */
+	left: 12.5px; /* 조절하여 내부 원을 가운데 위치시킴 */
+	transition: width 1s, height 1s;
+	z-index: 2;
+}
+
+.sidemenu3 img {
+	width: 100px;
+	position: absolute;
+	z-index: 3;
+	top: 11%;
+	left: 9%;
+	transition: width 1s, height 1s;
+}
+
+.sidemenu3_side {
+	width: 500px;
+	height: 125px;
+	background-color: white;
+	display: flex;
+	justify-content: center; /* 가로 중앙 정렬 */
+	align-items: center; /* 세로 중앙 정렬 */
+	position: absolute;
+	font-size: 0.6rem;
+	left: 62.5px;
+	z-index: 0;
+	transition: width 1s, height 1s;
+}
+
+.sidemenu3_side span {
+	width: 300px;
+	margin-right: 5%;
+}
+
+.narrowWidth::before {
+	width: 125px; /* 가상 요소에 대한 새로운 너비 */
+	height: 125px;
+}
+
+.login a {
+	display: flex;
+	justify-content: center; /* 가로 중앙 정렬 */
+	align-items: center; /* 세로 중앙 정렬 */
+	height: 100vh; /* 화면 높이의 100%만큼 설정 */
+}
+
+.login_btn {
+	position: absolute;
+	top: 87%;
+	font-family: 'S-CoreDream-3Light';
+	font-weight: 900;
+	font-size: 1.1rem;
+	width: 250px;
+	height: 50px;
+	background-color: #F4F4F4;
+	border: none;
+	border-radius: 10px;
+	color: #c5c4c4;
+	z-index: 999;
+	cursor: pointer;
+}
+
+.login_btn:hover {
+	color: black;
+	box-shadow: 0px 8px 16px rgba(32, 32, 32, 0.2);
+}

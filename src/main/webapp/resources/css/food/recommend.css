@@ -19,6 +19,27 @@ display: flex;
 margin-left : 10px;
   padding: 10px 25px 25px 25px;
 }
+
+.containerr::-webkit-scrollbar {
+   width: 3px;
+   background: #ddd;
+}
+
+/* "대부분 커스터마이징된" 스크롤바
+ * (width/height가 지정되지 않으면 보이지 않음 */
+.containerr::-webkit-scrollbar {
+   width: 15px;
+   height: 5px;
+   background-color: #ddd; /* 또는 트랙에 추가한다 */
+   border-radius: 10px;
+}
+
+/* 썸(thumb) 추가 */
+.containerr::-webkit-scrollbar-thumb {
+   background: #525FE1;
+   border-radius: 10px;
+}
+
 body .containerr .card {
   margin: auto;
   display: inline-block;

@@ -40,8 +40,7 @@ window.onload = function(){
 	}
 </script>
 	<div class="login">
-		<img lading="auto"
-			src="https://i.pinimg.com/originals/4d/83/dc/4d83dc364753dc242d1869f3efbd0c92.gif"
+		<img src="<%=request.getContextPath() %>/resources/imgs/background.jpg"
 			alt="login image" class="login__img">
 		<form action="login" name="login__form" class="login__form"
 			method="POST">

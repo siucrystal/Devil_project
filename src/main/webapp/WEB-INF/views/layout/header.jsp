@@ -9,11 +9,16 @@
    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/font/font.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+  <script>
+  function gohome(){
+     location.href ="/daily"
+  }
+  </script>
    <title>Daily Balance</title>
 </head>
 <body>
    <header>
-      <img class="logo" src="<%=request.getContextPath() %>/resources/imgs/logo.png" alt="logo">
+     <img class="logo" src="<%=request.getContextPath() %>/resources/imgs/logo.png" alt="logo" onclick="gohome()">
       <nav>
          <ul class="nav_links">
             <li><a href="<%=request.getContextPath()%>/mypage/main">My page</a></li>

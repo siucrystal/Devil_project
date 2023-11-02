@@ -35,7 +35,7 @@ swal({
 <body>
 	
    <div class="pw">
-   <img lading="auto" src="https://i.pinimg.com/originals/4d/83/dc/4d83dc364753dc242d1869f3efbd0c92.gif" alt="login image" class="pw__img">
+   <img src="<%=request.getContextPath() %>/resources/imgs/background.jpg" alt="login image" class="pw__img">
       <div class="pw__form">
       <form action="forgot" name="forgot__form" method="POST">
          <h1 class="pw__title">Forgot Password</h1>

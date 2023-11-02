@@ -214,6 +214,7 @@ function recipe_store(name) {
 		data: { name },
 		dataType: "json",
 		success: function(data) {
+			$('.user_recipe_name').val("");
 			getUserRecipe();
 			keepview();
 		},
@@ -321,7 +322,7 @@ window.onload = function() {
 			cancelButtonText: '아니오', // cancel 버튼 텍스트 지정
 		}).then((isConfirm) => {
 			if (isConfirm) { // 만약 모달창에서 confirm 버튼을 눌렀다면
-				$('.user_recipe_nmae').val("");
+				$('.user_recipe_name').val("");
 				newRecipe();
 			}
 		});

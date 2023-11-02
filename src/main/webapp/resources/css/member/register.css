@@ -59,7 +59,7 @@ img {
 
 .join__form {
    position: relative;
-   background-color: hsla(0, 0%, 10%, 0.8);
+   background-color: hsla(0, 0%, 10%, 0.2);
    border: 2px solid var(--white-color);
    margin-inline: 1.5rem;
    padding: 2.5rem 1.5rem;

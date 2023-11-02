@@ -187,7 +187,6 @@ public class FoodServiceImpl implements FoodService {
 		Date today = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd");
 		String date = sdf.format(today);
-		System.out.println(date);
 		Map<String, Object> map = new HashMap();
 		map.put("id", id);
 		map.put("date", date);

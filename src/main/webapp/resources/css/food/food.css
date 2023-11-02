@@ -93,6 +93,16 @@ form {
    font-size: 13px;
 }
 
+.cateBtn:hover {
+	background-color:#525FE1;
+	color:white;	
+}
+
+#calendar-button:hover{
+	background-color:#525FE1;
+	color:white;	
+}
+
 #category::-webkit-scrollbar {
    display: none;
 }
@@ -110,7 +120,7 @@ form {
    background: #000;
 }
 
-.myfood_body select, .myfood_body input[type="text"], .myfood_body input[type="submit"]
+.myfood_body select, .myfood_body input[type="number"], .myfood_body input[type="submit"]
    {
    margin: 5px;
    padding: 5px;
@@ -184,6 +194,11 @@ button.keep {
    border-radius: 5px;
    cursor: pointer;
    font-weight: 500;
+}
+
+button.keep:hover {
+	background-color:#525FE1;
+	color:white;
 }
 
 .button {

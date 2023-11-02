@@ -30,8 +30,7 @@
 <title>Daily Balance</title>
 <body>
 	<div class="join">
-		<img lading="auto"
-			src="https://i.pinimg.com/originals/4d/83/dc/4d83dc364753dc242d1869f3efbd0c92.gif"
+		<img src="<%=request.getContextPath() %>/resources/imgs/background.jpg"
 			alt="login image" class="join__img">
 		<form action="register" name="join__form" class="join__form"
 			method="POST">
